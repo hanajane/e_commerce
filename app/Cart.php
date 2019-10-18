@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App;
-
 
 class Cart
 {
@@ -17,6 +15,7 @@ class Cart
             $this->items = $prevCart->items;
             $this->totalQuantity = $prevCart->totalQuantity;
             $this->totalPrice = $prevCart->totalPrice;
+//            $this->grandTotal = $subtotal;
         }
         else
         {
@@ -26,9 +25,11 @@ class Cart
         }
     }
 
+    //add times to cart
     public function addItem($id, $product)
     {
         $price = (int) str_replace("$", "", $product->price);
+
         // if the item is already exists
         if(array_key_exists($id, $this->items))
         {

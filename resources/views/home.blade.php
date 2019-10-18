@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <h1>{!! Auth::user()->name !!}</h1>
+                    <p>E-mail : {!! Auth::user()->email !!}</p>
                 </div>
             </div>
         </div>

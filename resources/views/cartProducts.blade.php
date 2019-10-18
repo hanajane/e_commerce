@@ -13,6 +13,7 @@
         <div class="table-responsive cart_info">
             <table class="table table-condensed">
                 <thead>
+                {{ $userData->name }}
                     <tr class="cart_menu">
                         <td class="image">Item</td>
                         <td class="description"></td>
@@ -123,6 +124,8 @@
                     <ul>
                         <li>Cart Sub Total <span>{{$cartItems->totalPrice}}</span></li>
                         <li>Quantity <span>{{$cartItems->totalQuantity}}</span></li>
+                        <li>GST<span></span></li>
+                        <li>QST <span></span></li>
                         <li>Shipping Cost <span>Free</span></li>
                         <li>Total <span>$61</span></li>
                     </ul>

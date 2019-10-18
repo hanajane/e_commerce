@@ -17,12 +17,11 @@ class AddFieldsToProductsTable extends Migration
             $table->string('name', 100);
             $table->text('description');
             $table->string('image');
-            $table->decimal('price', 8, 2);	
+            $table->decimal('price', 8, 2);
             $table->string('type');
             $table->string('size');
         });
     }
-
     //these block is to reverse what i add above. use the command to delette unwanted columns
 
     /**

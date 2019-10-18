@@ -17,13 +17,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
         Schema::defaultStringLength(191);
-        // View::share('Name',"Rick");
-        // View::composer('*',function($view){
-        //     $view->with('userData',Auth::user());
-
-        // });
+         View::share('Name',"Rick");
+         View::composer('*',function($view){
+             $view->with('userData',Auth::user());
+         });
     }
 
     /**

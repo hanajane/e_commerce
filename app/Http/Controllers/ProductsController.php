@@ -17,8 +17,38 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = DB::table('products')->get();
+//      $products = DB::table('products')->get();
+        $products = Product::paginate(6);
 
+        return view("allProducts", compact("products"));
+    }
+
+    //category for swimwear
+    public function swimwearProducts()
+    {
+        $products = DB::table('products')->where('type', "swimwears")->get();
+        return view("swimwears", compact("products"));
+    }
+
+    //category for cover ups
+    public function coverUpProducts()
+    {
+        $products = DB::table('products')->where('type', "coverUps")->get();
+        return view("coverUps", compact("products"));
+    }
+
+    //category for accessories
+    public function accessoryProducts()
+    {
+        $products = DB::table('products')->where('type', "accessories")->get();
+        return view("accessories", compact("products"));
+    }
+
+    //search products
+    public function search(Request $request)
+    {
+        $searchText = $request->get('searchText');
+        $products = Product::where('name', "LIke", $searchText."%")->paginate(3);
         return view("allProducts", compact("products"));
     }
 
