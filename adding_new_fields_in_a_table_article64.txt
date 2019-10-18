@@ -1,0 +1,57 @@
+Adding New Fields In a Table
+Suppose that you want to add a new field in a table in your database. Let's say you want to add "brand" field to the products table. You have to follow a few steps in order to get it done correctly. Here are the 4 steps you need to follow.
+
+
+
+1. Navigate to your command line using Terminal in Mac or CMD in Windows. Then type:
+
+php artisan migrate:make update_products_table
+
+and hit enter
+
+
+
+2. Open up your project and go to database/migrations folder you will find a new file created called
+
+CURRENT_DATE_update_products_table.php
+
+*CURRENT_DATE could be in the format of 2020-07-19-43879 "a dummy number"
+
+open it and inside the up function add the field that you want with the datatype. In our casr we want to add "brand" field of string
+
+   public function up()    {               
+         
+               Schema::table('products', function (Blueprint $table) {                      
+ 
+                   $table->string('brands');        
+                      
+            });     
+ 
+}
+
+
+And inside the down function add this code. Which will enable you to rollback (Remove the field if you changed you mind)
+
+
+
+ public function down()    {        
+        
+                 Schema::table('products', function (Blueprint $table) {                 
+ 
+                    $table->dropColumn('brands');       
+ 
+              });  
+ 
+  }
+
+
+3. Finally in your command line type this command
+
+php artisan migrate
+
+You should now find brand field available in your products table.  You can then use this function in your ProductsController.php to get specific brand products  (DONOT forget to create a route and view for this)
+
+public function getBrand($brand_wanted){
+        $products = DB::table('products')->where('brand', $brand_wanted)->get();
+         return view("brandProducts",compact("products"));
+}
