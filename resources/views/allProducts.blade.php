@@ -4,6 +4,7 @@
 @section('center')
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
+				<H1>ALL PRODUCTS PAGE</H1>
 				<div class="row">
 					<div class="col-sm-9">
 						<div class="navbar-header">
@@ -79,7 +80,7 @@
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
 							<form action="search" method="GET">
-							<input type="text" name="searchText" placeholder="Search"/>
+								<input type="text" name="searchText" placeholder="Search"/>
 							</form>
 						</div>
 					</div>
@@ -209,7 +210,7 @@
 
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Features Items</h2>
+						<h2 class="title text-center">Features Items</h2>
 
                         @foreach ($products as $product)
                             <div class="col-sm-4">

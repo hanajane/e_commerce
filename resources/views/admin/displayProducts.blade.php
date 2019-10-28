@@ -12,6 +12,8 @@
             <th>Description</th>
             <th>Type</th>
             <th>Price</th>
+            <th>Size</th>
+            <th>Hashtags</th>
             <th>Edit Image</th>
             <th>Edit</th>
             <th>Remove</th>
@@ -29,6 +31,8 @@
                 <td>{{$product['description']}}</td>
                 <td>{{$product['type']}}</td>
                 <td>{{$product['price']}}</td>
+                <td>{{$product['size']}}</td>
+                <td>{{$product['hashtags']}}</td>
 
                 <td><a href="{{ route('adminEditProductImageForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit Image</a></td>
                 <td><a href="{{ route('adminEditProductForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit</a></td>

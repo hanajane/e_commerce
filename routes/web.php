@@ -16,7 +16,7 @@
 //     // return view('welcome');  //default welcome page
 //     // return view('test');
 // });
-    Route::get('/', ["uses" => "ProductsController@index", "as"=> "allProducts"]);
+Route::get('/', ["uses" => "ProductsController@index", "as"=> "homePage"]);
 
 //-----filters-------
 //show all products
@@ -75,6 +75,19 @@ Route::post('admin/sendCreateProductForm', ["uses"=>"Admin\AdminProductsControll
 
 //delete/remove product
 Route::get('admin/deleteProduct/{id}', ["uses"=>"Admin\AdminProductsController@deleteProductForm", "as"=> "adminDeleteProduct"]); // always pass ID so we know what product to be executed : CRUD
+
+//increase single product in cart
+Route::get('product/increaseSingleProduct/{id}', ["uses"=>"ProductsController@increaseSingleProduct", "as"=> "IncreaseSingleProduct"]); // always pass ID so we know what product to be executed : CRUD
+
+//decrease single product in cart
+Route::get('product/decreaseSingleProduct/{id}', ["uses"=>"ProductsCOntroller@decreaseSingleProduct", "as"=> "DecreaseSingleProduct"]); // always pass ID so we know what product to be executed : CRUD
+
+
+// *** CHEACK OUT
+
+//create an order
+Route::get('product/createOrder/',['uses'=>'ProductsController@createOrder','as'=>'createOrder']);
+
 
 //storage
 

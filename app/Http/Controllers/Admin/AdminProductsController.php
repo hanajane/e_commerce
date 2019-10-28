@@ -27,6 +27,7 @@ class AdminProductsController extends Controller
         $type = $request->input('type');
         $price = $request->input('price');
         $size = $request->input('size');
+        $hashtags = $request->input('hashtags');
 
         Validator::make($request->all(), ['image' => "required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate(); //required, to not to proceed without adding an image | type of file is file | mimes, are the extensions allowed
         $ext = $request->file('image')->getClientOriginalExtension(); //usually jpg
@@ -36,7 +37,7 @@ class AdminProductsController extends Controller
         $imageEncoded = File::get($request->image);  //use the File class to the image encoded version
         Storage::disk('local')->put('public/product_images/'.$imageName, $imageEncoded);  //another way of uploading an image
 
-        $newProductArray = array("name"=>$name, "description" => $description, "image"=> $imageName, "type" => $type, "price" => $price, "size"=> $size); //array were updating
+        $newProductArray = array("name"=>$name, "description" => $description, "image"=> $imageName, "type" => $type, "price" => $price, "size"=> $size, "hashtags" => $hashtags); //array were updating
 
         $created = DB::table('products')->insert($newProductArray); // inserts the new product
 
@@ -101,8 +102,10 @@ class AdminProductsController extends Controller
         $description = $request->input('description');
         $type = $request->input('type');
         $price = $request->input('price');
+        $size = $request->input('size');
+        $hashtags = $request->input('hashtags');
 
-        $updateArray = array('name'=>$name, "description" => $description, "type" => $type, "price" => $price); //array were updating
+        $updateArray = array('name'=>$name, "description" => $description, "type" => $type, "price" => $price, "size" => $size, "hashtags" => $hashtags); //array were updating
 
         DB::table('products')->where('id', $id)->update($updateArray); //passing the name of the table which is 'products' where the column is 'id'
 

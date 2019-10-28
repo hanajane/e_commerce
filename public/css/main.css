@@ -2533,4 +2533,17 @@ h2.title {
     opacity:0.9;
 }
 
+.bb_parent {
+    position: relative;
+}
+.bb_child {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+.pushDown {
+    margin-bottom: 30px;
+}
 
+/***** Pics effects *****/

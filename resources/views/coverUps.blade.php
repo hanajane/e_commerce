@@ -39,7 +39,9 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <form action="" method="">
+                            <input name="searchText" type="text" placeholder="Search"/>
+                        </form>
                     </div>
                 </div>
             </div>

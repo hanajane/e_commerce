@@ -55,6 +55,10 @@
                 <label for="type">Size</label>
                 <input type="text" class="form-control" name="size" id="size" placeholder="size" required>
             </div>
+            <div class="form-group">
+                <label for="type">Hashtags</label>
+                <input type="text" class="form-control" name="hashtags" id="size" placeholder="size" required>
+            </div>
             <button type="submit" name="submit" class="btn btn-default">Submit</button>
         </form>
 

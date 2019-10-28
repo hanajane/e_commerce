@@ -24,6 +24,14 @@
                 <label for="type">Price</label>
                 <input type="text" class="form-control" name="price" id="price" placeholder="price" value="{{$product->price}}" required>
             </div>
+            <div class="form-group">
+                <label for="type">Size</label>
+                <input type="text" class="form-control" name="size" id="size" placeholder="size" value="{{$product->size}}" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Hashtags</label>
+                <input type="text" class="form-control" name="hashtags" id="price" placeholder="hashtags" value="{{$product->v}}" required>
+            </div>
             <button type="submit" name="submit" class="btn btn-default">Submit</button>
         </form>
     </div>

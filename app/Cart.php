@@ -48,9 +48,8 @@ class Cart
         $this->totalPrice = $this->totalPrice + $price;
     }
 
-    public function updateQuantity()
+    public function updatePriceAndQuantity()
         {
-            $totalPrice = 0;
             $totalQuantity = 0;
 
             foreach ($this->items as $item)             //loop through the big Cart, gets existing count
