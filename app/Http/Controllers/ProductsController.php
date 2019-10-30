@@ -145,7 +145,8 @@ class ProductsController extends Controller
 
 
     //create order
-    public function createOrder(){
+    public function createOrder()
+    {
         $cart = Session::get('cart');
 
         //cart is not empty
@@ -156,8 +157,8 @@ class ProductsController extends Controller
             $created_order = DB::table("orders")->insert($newOrderArray);
             $order_id = DB::getPdo()->lastInsertId();;
 
-
-            foreach ($cart->items as $cart_item){
+            foreach ($cart->items as $cart_item)
+            {
                 $item_id = $cart_item['data']['id'];
                 $item_name = $cart_item['data']['name'];
                 $item_price = $cart_item['data']['price'];
@@ -169,13 +170,10 @@ class ProductsController extends Controller
             Session::forget("cart");
             Session::flush();
             return redirect()->route("allProducts")->withsuccess("Thanks For Choosing Us");
-
-        }else{
-
-            return redirect()->route("allProducts");
-
         }
-
-
+        else
+        {
+            return redirect()->route("allProducts");
+        }
     }
 }

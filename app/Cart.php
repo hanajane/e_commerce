@@ -28,7 +28,7 @@ class Cart
     //add times to cart
     public function addItem($id, $product)
     {
-        $price = (int) str_replace("$", "", $product->price);
+        $price = (int) str_replace("$", "", $product->price); // adds the $ sign in all prices // converts the string back into integer
 
         // if the item is already exists
         if(array_key_exists($id, $this->items))
@@ -50,6 +50,7 @@ class Cart
 
     public function updatePriceAndQuantity()
         {
+            $totalPrice = 0;
             $totalQuantity = 0;
 
             foreach ($this->items as $item)             //loop through the big Cart, gets existing count
