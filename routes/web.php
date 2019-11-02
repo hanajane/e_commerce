@@ -88,6 +88,11 @@ Route::get('product/decreaseSingleProduct/{id}', ["uses"=>"ProductsCOntroller@de
 //create an order
 Route::get('product/createOrder/',['uses'=>'ProductsController@createOrder','as'=>'createOrder']);
 
+//check out products
+Route::get('product/checkOutProducts/',['uses'=>'ProductsController@checkOutProducts','as'=>'checkOutProducts']);
+
+//process checkout page
+Route::post('product/createNewOrder/',['uses'=>'ProductsController@createNewOrder','as'=>'createNewOrder']);
 
 //storage
 
