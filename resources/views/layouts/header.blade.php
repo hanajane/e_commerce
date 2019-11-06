@@ -122,9 +122,8 @@
                                 @endif
 								<li><a href="{{route('cartProducts')}}"><i class="fa fa-shopping-cart"></i>
                                         @if(Session::has('cart'))
-                                        <span class="cart-with-numbers">{‌{Session::get('cart')->totalQuantity}}</span>
+                                        <span class="cart-with-numbers">{{Session::get('cart')->totalQuantity}}</span>
                                         @endif
-										Cart
 									</a>
 								</li>
 							</ul>

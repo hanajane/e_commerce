@@ -240,13 +240,13 @@ class ProductsController extends Controller
             Session::forget("cart");
             Session::flush();
 
-            // $payment_info =  $newOrderArray;
+            $payment_info =  $newOrderArray;
             // $payment_info['order_id'] = $order_id;
-            // $request->session()->put('payment_info',$payment_info);
+            $request->session()->put('payment_info',$payment_info);
 
-          print_r($newOrderArray);
+        //   print_r($newOrderArray); //checks if products are proceeded
             
-        //  return redirect()->route("showPaymentPage");
+         return redirect()->route("showPaymentPage");
         }
         else
         {

@@ -5,7 +5,9 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
-
+body, html {
+  height: 100%;
+}
 body {
     font-family: 'Roboto', sans-serif;
     /*background:;*/
@@ -566,10 +568,8 @@ ul.sub-menu {
 /*************************
 ******* Home ******
 **************************/
-
-
-#slider {
-    padding-bottom: 45px;
+section#slider {
+    padding: 45px 0 45px 0;
 }
 
 .carousel-indicators li {
@@ -583,7 +583,6 @@ ul.sub-menu {
 .item {
     padding-left: 100px;
 }
-
 
 .pricing {
     position: absolute;
@@ -890,7 +889,7 @@ h2.title {
     position:relative;
 }
 
-.product-overlay {
+/* .product-overlay {       //uncommented product overlay to tryout a new effect
     background:#FE980F;
     top: 0;
     display: none;
@@ -900,6 +899,34 @@ h2.title {
     width: 100%;
     display: block;
     opacity:;
+} */
+.product-image-wrapper{
+position: relative;
+  width: 100%;
+  max-width: 400px
+}
+.overlay-content {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+height: 100%;
+width: 100%;
+opacity: 0;
+list-style-type: none;
+border: 1px solid #eee;
+margin: 0;
+padding: 0;
+-webkit-transition: 0.3s;
+transition: 0.3s;
+/* background-color: #5BBCEC; */
+/* background-image: url('product_images/'.$product->image); */
+}
+.product-image-wrapper:hover .overlay-content {
+  opacity: 1;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.089)
+
 }
 
 .single-products:hover .product-overlay {
@@ -2547,3 +2574,43 @@ h2.title {
 }
 
 /***** Pics effects *****/
+/***** parallax ****/
+.parallax1, .parallax2, .parallax3 {
+  /* Full height */
+  height: 100%; 
+
+  /* Create the parallax scrolling effect */
+  position: relative;
+    /* opacity: 0.65; */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.caption {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+.caption span.border {
+    background-color: rgba(17, 17, 17, 0.425);
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+.parallax1 {
+      /* The image used */
+    background-image: url(../images/covers/swimwear.jpg);
+}
+.parallax2 {
+      /* The image used */
+    background-image: url(../images/covers/coverups.jpg);
+}
+.parallax3 {
+      /* The image used */
+    background-image: url(../images/covers/accessories.jpg);
+}

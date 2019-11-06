@@ -1,5 +1,6 @@
 
 @extends('layouts.index')
+
 @section('center')
 <section id="cart_items">
     <div class="container">
@@ -17,7 +18,7 @@
                             <div class="form-one">
                               <div class="total_area">
                                 <ul>
-                                    <li>Payment Status
+                                    {{-- <li>Payment Status
                                     @if($payment_info['status'] == 'on_hold')
 
                                       <span>not paid yet</span>
@@ -28,7 +29,16 @@
                                     <li>Total <span>{{$payment_info['price']}}</span></li>
                                 </ul>
                                 <a class="btn btn-default update" href="">Update</a>
-                                <a class="btn btn-default check_out" id="paypal-button" ></a>
+                                <a class="btn btn-default check_out" id="paypal-button" ></a>checkOutProducts --}}
+
+                                <ul>
+                                    <li> Payment Status <span>{{$payment_info['status']}}</span></li>
+                                    {{-- <li> Quantity <span>{{$cartItems->totalQuantity}}</span></li> --}}
+                                    <li> Shipping Cost <span>Free</span></li>
+                                    <li> Total <span>{{$payment_info['price']}}</span></li>
+                                </ul>
+                                    <a class="btn btn-default update" href="">Update</a>
+                                    <a class="btn btn-default check_out" id="paypal-button" href="">Pay now</a>
                               </div>      
                             </div>
                             <div class="form-two">

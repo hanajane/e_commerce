@@ -35,7 +35,7 @@
 						</div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Shop All</a></li>
+                                <li><a href="{{route('allProducts')}}" class="active">Shop All</a></li>
                                 <li><h4 class="panel-title"><a href="{{route('swimwearProducts')}}">Swimwears</a></h4></li>
 								<li class="dropdown"><a href="#">Swimwears<i class="fa fa-angle-down"></i></a>
                                    <ul role="menu" class="sub-menu">
@@ -84,7 +84,11 @@
 	<div class="container">
 		@include('alert')
 	</div>
-	
+	<div class="parallax1">
+		<div class="caption">
+  			<a href=""><span class="border">SHOP OUR SWIMWEAR</span></a>
+  		</div>
+	</div>
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
@@ -94,19 +98,20 @@
 							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
 							<li data-target="#slider-carousel" data-slide-to="2"></li>
+							<li data-target="#slider-carousel" data-slide-to="3"></li>
+							<li data-target="#slider-carousel" data-slide-to="4"></li>
 						</ol>
 
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
+									<h1>One-PIECE</h1>
 									<h2>sub title</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<p>Trendy Designs, Comfy Fabric. Find Your Fit. Fantastic for Everybody. Best Deals for Your Vacay.</p>
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{asset('images/home/girl1.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('images/home/pricing.png')}}"  class="pricing" alt="" />
+									<img src="{{asset('images/covers/onePiece.jpg')}}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 							<div class="item">
@@ -117,8 +122,7 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{asset('images/home/girl2.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('images/home/pricing.png')}}"  class="pricing" alt="" />
+									<img src="{{asset('images/covers/twoPiece.jpg')}}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 
@@ -130,8 +134,31 @@
 									<button type="button" class="btn btn-default get">Get it now</button>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{asset('images/home/girl3.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('images/home/pricing.png')}}" class="pricing" alt="" />
+									<img src="{{asset('images/covers/x/monokini.jpg')}}" class="girl img-responsive" alt="" />
+								</div>
+							</div>
+
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>FSub title</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="{{asset('images/covers/x/string.jpg')}}" class="girl img-responsive" alt="" />
+								</div>
+							</div>
+							
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>E</span>-SHOPPER</h1>
+									<h2>FSub title</h2>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+									<button type="button" class="btn btn-default get">Get it now</button>
+								</div>
+								<div class="col-sm-6">
+									<img src="{{asset('images/covers/x/sport.jpg')}}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
 
@@ -149,11 +176,15 @@
 			</div>
 		</div>
 	</section><!--/slider-->
-
+		<div class="parallax2">
+			<div class="caption" style="text-align:right">
+				<a href=""><span class="border">SHOP OUR COVERUPS</span></a>
+			</div>
+		</div>
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				{{-- <div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
@@ -187,7 +218,7 @@
 									<li><a href="#"> <span class="pull-right">(4)</span>RÃ¶sch creative culture</a></li>
 								</ul>
 							</div>
-						</div><!--/brands_products--> --}}
+						</div><!--/brands_products-->
 
 						<div class="price-range"><!--price-range-->
 							<h2>Price Range</h2>
@@ -200,11 +231,9 @@
 						<div class="shipping text-center"><!--shipping-->
 							<img src="{{asset('images/home/shipping.jpg')}}" alt="" />
 						</div><!--/shipping-->
-
 					</div>
-				</div>
-
-				<div class="col-sm-9 padding-right">
+				</div> --}}
+				<div class="col">
 					<div class="features_items"><!--features_items-->
                         <h2 class="title text-center">Features Items</h2>
 
@@ -239,9 +268,15 @@
 					</div><!--features_items-->
 
                     {{$products->links()}}
-
+	</section>
+		<div class="parallax3">
+			<div class="caption" style="text-align:left">
+				<a href=""><span class="border">SHOP OUR ACCESSORIES</span></a>
+			</div>
+		</div>
+	<section>
 					<div class="category-tab"><!--category-tab-->
-						<div class="col-sm-12">
+						{{-- <div class="col-sm-12">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
 								<li><a href="#blazers" data-toggle="tab">Blazers</a></li>
@@ -249,7 +284,7 @@
 								<li><a href="#kids" data-toggle="tab">Kids</a></li>
 								<li><a href="#poloshirt" data-toggle="tab">Polo shirt</a></li>
 							</ul>
-						</div>
+						</div> --}}
 						<div class="tab-content">
 							<div class="tab-pane fade active in" id="tshirt" >
 								<div class="col-sm-3">
@@ -528,7 +563,7 @@
 						</div>
 					</div><!--/category-tab-->
 
-					<div class="recommended_items"><!--recommended_items-->
+					{{-- <div class="recommended_items"><!--recommended_items-->
 						<h2 class="title text-center">recommended items</h2>
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
@@ -616,7 +651,7 @@
 								<i class="fa fa-angle-right"></i>
 							  </a>
 						</div>
-					</div><!--/recommended_items-->
+					</div><!--/recommended_items--> --}}
 
 				</div>
 			</div>

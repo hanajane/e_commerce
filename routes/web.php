@@ -20,7 +20,7 @@ Route::get('/', ["uses" => "ProductsController@index", "as"=> "homePage"]);
 
 //-----filters-------
 //show all products
-Route::get('products', ["uses" => "ProductsController@index", "as"=> "allProducts"]);
+Route::get('products', ["uses" => "ProductsController@shopAll", "as"=> "allProducts"]);
 
 //category for men
 Route::get('products/swimwears', ["uses" => "ProductsController@swimwearProducts", "as"=> "swimwearProducts"]);
@@ -49,6 +49,7 @@ Route::get('product/deleteItemFromCart/{id}', ["uses" => "ProductsController@del
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 //**** ADMIN ****
 
@@ -93,6 +94,9 @@ Route::get('product/checkOutProducts/',['uses'=>'ProductsController@checkOutProd
 
 //process checkout page
 Route::post('product/createNewOrder/',['uses'=>'ProductsController@createNewOrder','as'=>'createNewOrder']);
+
+//payment page
+Route::get('payment/paymentPage', ["uses"=> "Payment\PaymentsController@showPaymentPage", 'as'=> 'showPaymentPage']);
 
 //storage
 
