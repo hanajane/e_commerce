@@ -7,7 +7,7 @@
 				<div class="row pushDown">
 					<div class="col bb_parent">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="{{asset('images/home/beachyBody_logo.png')}}" alt="" /></a>
+							<a href="{{route('homePage')}}"><img src="{{asset('images/home/beachyBody_logo.png')}}" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
 							<div class="btn-group">
@@ -18,7 +18,7 @@
 					<div class="col">
 						<div class="search_box pull-right">
 							<form action="search" method="GET">
-							<input type="text" name="searchText" placeholder="Search"/>
+								<input type="text" name="searchText" placeholder="Search"/>
 							</form>
 						</div>
 					</div>
@@ -35,9 +35,9 @@
 						</div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="{{route('allProducts')}}" class="active">Shop All</a></li>
-                                <li><h4 class="panel-title"><a href="{{route('swimwearProducts')}}">Swimwears</a></h4></li>
-								<li class="dropdown"><a href="#">Swimwears<i class="fa fa-angle-down"></i></a>
+                                <li><a href="{{route('allProducts')}}" class="panel-title">Shop All</a></li>
+                                <li><a href="{{route('swimwearProducts')}}" class="panel-title">Swimwears</a></li>
+								<li class="dropdown panel-title"><a href="#" class="panel-title">Swimwears<i class="fa fa-angle-down"></i></a>
                                    <ul role="menu" class="sub-menu">
 									   <li><a href="shop.html">Multi-Way</a></li>
 										<li><a href="login.html">Monokini</a></li>
@@ -49,32 +49,10 @@
 										<li><a href="login.html">Sport Top</a></li>
                               		</ul>
 	                             </li>
-                                <li><h4 class="panel-title"><a href="{{route('coverUpProducts')}}">Cover ups</a></h4> </li>
-                                <li><h4 class="panel-title"><a href="{{route('accessoryProducts')}}">Accessories</a></h4> </li>
+                                <li><a href="{{route('coverUpProducts')}}" class="panel-title">Cover ups</a></li>
+                                <li><a href="{{route('accessoryProducts')}}" class="panel-title">Accessories</a></li>
                             </ul>
                         </div>
-{{--						<div class="mainmenu pull-left">--}}
-{{--							<ul class="nav navbar-nav collapse navbar-collapse">--}}
-{{--								<li><a href="index.html" class="active">Home</a></li>--}}
-{{--								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>--}}
-{{--                                    <ul role="menu" class="sub-menu">--}}
-{{--                                        <li><a href="shop.html">Products</a></li>--}}
-{{--										<li><a href="product-details.html">Product Details</a></li>--}}
-{{--										<li><a href="checkout.html">Checkout</a></li>--}}
-{{--										<li><a href="cart.html">Cart</a></li>--}}
-{{--										<li><a href="login.html">Login</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>--}}
-{{--                                    <ul role="menu" class="sub-menu">--}}
-{{--                                        <li><a href="blog.html">Blog List</a></li>--}}
-{{--										<li><a href="blog-single.html">Blog Single</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--								<li><a href="404.html">404</a></li>--}}
-{{--								<li><a href="contact-us.html">Contact</a></li>--}}
-{{--							</ul>--}}
-{{--						</div>--}}
 					</div>
 				</div>
 			</div>
@@ -86,7 +64,7 @@
 	</div>
 	<div class="parallax1">
 		<div class="caption">
-  			<a href=""><span class="border">SHOP OUR SWIMWEAR</span></a>
+  			<a href="{{route('swimwearProducts')}}"><span class="border">SHOP OUR SWIMWEAR</span></a>
   		</div>
 	</div>
 	<section id="slider"><!--slider-->
@@ -105,10 +83,10 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
-									<h1>One-PIECE</h1>
-									<h2>sub title</h2>
+									<h1>One-Piece</h1>
+									{{-- <h2>sub title</h2> --}}
 									<p>Trendy Designs, Comfy Fabric. Find Your Fit. Fantastic for Everybody. Best Deals for Your Vacay.</p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<div type="button" class="cl-effect-15 get"><a href="" data-hover="Find yours!">Find yours!</a></div>
 								</div>
 								<div class="col-sm-6">
 									<img src="{{asset('images/covers/onePiece.jpg')}}" class="girl img-responsive" alt="" />
@@ -116,10 +94,9 @@
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1>Two-Piece</h1>
+									<p>Explore the hottest styles in women's swimsuits from the beach to the pool. Mix and match to make your perfect two piece swimsuit. </p>
+									<div type="button" class="cl-effect-15 get"><a href="" data-hover="Find yours!">Find yours!</a></div>
 								</div>
 								<div class="col-sm-6">
 									<img src="{{asset('images/covers/twoPiece.jpg')}}" class="girl img-responsive" alt="" />
@@ -128,10 +105,10 @@
 
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>FSub title</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1> Monokini</h1>
+									<p>The very fashionable trend for this year is the sexy fashion monokini, which essentially is a one-piece cutout swimsuit.
+									</p>
+									<div type="button" class="cl-effect-15 get"><a href="" data-hover="Find yours!">Find yours!</a></div>
 								</div>
 								<div class="col-sm-6">
 									<img src="{{asset('images/covers/x/monokini.jpg')}}" class="girl img-responsive" alt="" />
@@ -140,10 +117,10 @@
 
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>FSub title</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1>Multiway</h1>
+									<p>Our trendy and playful Multiway sets for lounging by the pool are made to help you look and feel great!
+										Find a new swimsuit that can fit your every mood! Multiway, reversible, and versatile.</p>
+									<div type="button" class="cl-effect-15 get"><a href="" data-hover="Find yours!">Find yours!</a></div>
 								</div>
 								<div class="col-sm-6">
 									<img src="{{asset('images/covers/x/string.jpg')}}" class="girl img-responsive" alt="" />
@@ -152,10 +129,10 @@
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
-									<h2>FSub title</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<h1>Sport Bikini Tops</h1>
+									<p>Our Sport Bikini Tops collections are made to move with your body while offering the support you need for your activities.
+										We also have Sport Tops that offer more coverage than a traditional women's swim top.</p>
+									<div type="button" class="cl-effect-15 get"><a href="" data-hover="Find yours!">Find yours!</a></div>
 								</div>
 								<div class="col-sm-6">
 									<img src="{{asset('images/covers/x/sport.jpg')}}" class="girl img-responsive" alt="" />
@@ -178,7 +155,7 @@
 	</section><!--/slider-->
 		<div class="parallax2">
 			<div class="caption" style="text-align:right">
-				<a href=""><span class="border">SHOP OUR COVERUPS</span></a>
+				<a href="{{route('coverUpProducts')}}"><span class="border">SHOP OUR COVERUPS</span></a>
 			</div>
 		</div>
 	<section>
@@ -233,336 +210,63 @@
 						</div><!--/shipping-->
 					</div>
 				</div> --}}
-				<div class="col">
-					<div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Features Items</h2>
 
-                        @foreach ($products as $product)
-                            <div class="col-sm-4">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            {{$product->id}}
-                                            <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
-                                            <h2>{{$product -> price}}</h2>
-                                            <p>{{$product -> name}}</p>
-                                            <a href="{{route('AddToCartProduct',['id'=>$product->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                        </div>
-                                        <div class="product-overlay">
-                                            <div class="overlay-content">
-                                                <h2>{{$product -> price}}</h2>
-                                                <p>{{$product -> name}}</p>
-                                                <a href="{{route('AddToCartProduct',['id'=>$product->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="choose">
-                                        <ul class="nav nav-pills nav-justified">
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-					</div><!--features_items-->
 
-                    {{$products->links()}}
+{{-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+ 
+  <ol class="carousel-indicators">
+   @foreach( $products as $product )
+      <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+   @endforeach
+  </ol>
+ 
+  <div class="carousel-inner" role="listbox">
+    @foreach( $products as $product )
+	   <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+		{{$product->id}}
+			<img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
+              <div class="carousel-caption d-none d-md-block">
+                 <h3>{{ $product->price }}</h3>
+                 <p>{{ $product->name }}</p>
+              </div>
+       </div>
+    @endforeach
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> --}}
+
+				<div class="row featured">
+					<div class="recommended_items"><!--fetured_items-->
+						<div class="cl-effect-15">
+							<h2 class="text-center"><a href="" data-hover="FEATURED ITEMS">FEATURED ITEMS</a></h2>
+						</div>
+					</div><!--/fetured_items-->
+				</div>
 	</section>
 		<div class="parallax3">
 			<div class="caption" style="text-align:left">
-				<a href=""><span class="border">SHOP OUR ACCESSORIES</span></a>
+				<a href="{{route('accessoryProducts')}}"><span class="border">SHOP OUR ACCESSORIES</span></a>
 			</div>
 		</div>
 	<section>
-					<div class="category-tab"><!--category-tab-->
-						{{-- <div class="col-sm-12">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
-								<li><a href="#blazers" data-toggle="tab">Blazers</a></li>
-								<li><a href="#sunglass" data-toggle="tab">Sunglass</a></li>
-								<li><a href="#kids" data-toggle="tab">Kids</a></li>
-								<li><a href="#poloshirt" data-toggle="tab">Polo shirt</a></li>
-							</ul>
-						</div> --}}
-						<div class="tab-content">
-							<div class="tab-pane fade active in" id="tshirt" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery1.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery2.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery3.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery4.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="blazers" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery4.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery3.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery2.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery1.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="sunglass" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery3.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery4.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery1.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery2.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="kids" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery1.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery2.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery3.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery4.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="tab-pane fade" id="poloshirt" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery2.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery4.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery3.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{{asset('images/home/gallery1.jpg')}}" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</div>
+		<div class="shopNow-tab"><!--shopNow section-->
+			<div class="tab-content">
+				<div class="row">
+					<div class="col">
+						<div class="shopNow">
+							<a href="{{route('allProducts')}}"><button class="button shopBtn"><h2>Shop Now</h2></button></a>
 						</div>
-					</div><!--/category-tab-->
-
+					</div>
+				</div>
+			</div>
+		</div><!--/shopNow section-->
 					{{-- <div class="recommended_items"><!--recommended_items-->
 						<h2 class="title text-center">recommended items</h2>
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -657,4 +361,9 @@
 			</div>
 		</div>
 	</section>
+		<div class="parallax4">
+			<div class="caption">
+				<a href=""><span class="border">WHAT'S ON SALE?</span></a>
+			</div>
+		</div>
 @endsection

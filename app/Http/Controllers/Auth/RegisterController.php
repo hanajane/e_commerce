@@ -28,7 +28,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/'; // thi redirect to home "homrPage" page as a user logs in
+    // protected $redirectTo = '/home'; // filters wether a user is just a regular user or an admin
 
     /**
      * Create a new controller instance.

@@ -105,7 +105,7 @@
 								{{-- <li><a href="/home"><i class="fa fa-lock"></i> Profile</a></li> --}}
 								<li class="dropdown"><a href="#">My account<i class="fa fa-angle-down fa fa-lock"></i></a>
                                    <ul role="menu" class="sub-menu">
-									   <li><a href="{{ route('home') }}">Personal Info and Payments</a></li>
+									   <li><a href="{{ route('userProfile') }}">Personal Info and Payments</a></li>
 										<li><a href="login.html">Order History</a></li>
 										<li><a href="product-details.html">Whishlist</a></li><br />
 										<li><a href="{{ route('logout') }}" onclick="event.preventDefault();

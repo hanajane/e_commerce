@@ -1,12 +1,17 @@
 /* lg */ 
 @media (min-width: 1200px) {
+	.searchSmall {
+		display: none;
+	}
 
 }
 
 /* md */
 @media (min-width: 992px) and (max-width: 1199px) {
  
- 
+ 	.searchSmall {
+		display: none;
+	}
 .usa{
 	margin-right: 0;
 } 
@@ -119,11 +124,23 @@
 	font-size: 12px;
 	top: 5px;
 }
+.searchSmall {
+
+	border-color: red;
+
+}
+.searchBig {
+	border-color: red;
+	display: none!important;
+}
 
 }
 
 /* xs */
 @media (max-width: 767px) {
+.searchBig {
+	display: none!important;
+}
 
 .header_top .col-sm-6:first-child{
 	display: inline-block;

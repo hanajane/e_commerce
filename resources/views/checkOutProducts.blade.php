@@ -120,7 +120,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="total_area">
-                    <a class="btn btn-default update" href="">Update</a>
+                    <a class="btn btn-default update" href="{{route ('cartProducts')}}">Update</a>
                 </div>
             </div>
         </div>

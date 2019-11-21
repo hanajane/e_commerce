@@ -33,8 +33,8 @@ class ProductsController extends Controller
     //category for swimwear
     public function swimwearProducts()
     {
-        $products = DB::table('products')->where('type', "swimwears")->get();
-        return view("swimwears", compact("products"));
+        $products = DB::table('products')->where('type', "swimwear")->get();
+        return view("swimwear", compact("products"));
     }
 
     //category for cover ups
@@ -55,10 +55,11 @@ class ProductsController extends Controller
     public function search(Request $request)
     {
         $searchText = $request->get('searchText');
-        $products = Product::where('name', "LIke", $searchText."%")
-                            ->orWhere('type', "LIke", $searchText."%")
-                            ->orWhere('hashtags', "LIke", $searchText."%")->paginate(3);
-        return view("allProducts", compact("products"));
+        $products = Product::where('name', "Like", $searchText."%")
+                            ->orWhere('type', "Like", $searchText."%")
+                            ->orWhere('hashtags', "Like", $searchText."%")->paginate(3);
+
+        return view("allProducts", compact("products"))->render();;
     }
 
     public function addProductToCart(Request $request,$id)
@@ -241,7 +242,7 @@ class ProductsController extends Controller
             Session::flush();
 
             $payment_info =  $newOrderArray;
-            // $payment_info['order_id'] = $order_id;
+            $payment_info['order_id'] = $order_id;
             $request->session()->put('payment_info',$payment_info);
 
         //   print_r($newOrderArray); //checks if products are proceeded

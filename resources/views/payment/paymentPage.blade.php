@@ -6,7 +6,7 @@
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{route('allProducts')}}">Home</a></li>
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
@@ -29,15 +29,15 @@
                                     <li>Total <span>{{$payment_info['price']}}</span></li>
                                 </ul>
                                 <a class="btn btn-default update" href="">Update</a>
-                                <a class="btn btn-default check_out" id="paypal-button" ></a>checkOutProducts --}}
-
+                                <a class="btn btn-default check_out" id="paypal-button" >
+                                  </a>checkOutProducts --}}
                                 <ul>
-                                    <li> Payment Status <span>{{$payment_info['status']}}</span></li>
+                                    <li class="hideElement"> Payment Status <span>{{$payment_info['status']}}</span></li>
                                     {{-- <li> Quantity <span>{{$cartItems->totalQuantity}}</span></li> --}}
                                     <li> Shipping Cost <span>Free</span></li>
                                     <li> Total <span>{{$payment_info['price']}}</span></li>
                                 </ul>
-                                    <a class="btn btn-default update" href="">Update</a>
+                                    <a class="btn btn-default update" href="{{ route('cartProducts') }}">Update</a>
                                     <a class="btn btn-default check_out" id="paypal-button" href="">Pay now</a>
                               </div>      
                             </div>
@@ -58,8 +58,8 @@
     // Configure environment
     env: 'sandbox',
     client: {
-      sandbox: 'YOUR_SANDBOX_CLIENT_ID',
-      production: 'YOUR_PRODUCTION_CLIENT_ID'
+      sandbox: 'AT7vRBK__Q5XBNSiDvvRrYSFnaK7hR8OcVpsoNamXB4RyLQTXyMKILQ3K5VMIIWQI2m4boHc5U8MYYQY',
+      production: 'vindernonlinebusiness@business.com'
     },
     // Customize button (optional)
     locale: 'en_US',
@@ -89,11 +89,12 @@
         // Show a confirmation message to the buyer
         window.alert('Thank you for your purchase!');
 
-        window.location = './paymentreceipt/'+data.paymentID+'/'+data.payerID;
+        window.location = './paymentReceipt/'+data.paymentID+'/'+data.payerID;
+        // window.location = "{{url('payment/paymentReceipt')}}"+"/"+data.paymentID+"/"+data.payerID;
+
       });
     }
   }, '#paypal-button');
-
 </script>
 
 

@@ -2,98 +2,13 @@
 @extends('layouts.index')
 
 @section('center')
-		<div class="header-bottom"><!--header-bottom-->
-			<div class="container">
-				<H1>ALL PRODUCTS PAGE</H1>
-				<div class="row">
-					<div class="col-sm-9">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-                                <div class="panel-group category-products" id="accordian"><!--category-productsr-->
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title"><a href="{{route('swimwearProducts')}}">Swimwears</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title"><a href="{{route('coverUpProducts')}}">Cover ups</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title"><a href="{{route('accessoryProducts')}}">Accessories</a></h4>
-                                        </div>
-                                    </div>
-                                </div><!--/category-products-->
-                        <div class="mainmenu pull-left">
-                            <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Shop All</a></li>
-                                <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="login.html">Login</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
-                        </div>
-{{--						<div class="mainmenu pull-left">--}}
-{{--							<ul class="nav navbar-nav collapse navbar-collapse">--}}
-{{--								<li><a href="index.html" class="active">Home</a></li>--}}
-{{--								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>--}}
-{{--                                    <ul role="menu" class="sub-menu">--}}
-{{--                                        <li><a href="shop.html">Products</a></li>--}}
-{{--										<li><a href="product-details.html">Product Details</a></li>--}}
-{{--										<li><a href="checkout.html">Checkout</a></li>--}}
-{{--										<li><a href="cart.html">Cart</a></li>--}}
-{{--										<li><a href="login.html">Login</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>--}}
-{{--                                    <ul role="menu" class="sub-menu">--}}
-{{--                                        <li><a href="blog.html">Blog List</a></li>--}}
-{{--										<li><a href="blog-single.html">Blog Single</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
-{{--								<li><a href="404.html">404</a></li>--}}
-{{--								<li><a href="contact-us.html">Contact</a></li>--}}
-{{--							</ul>--}}
-{{--						</div>--}}
-					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<form action="search" method="GET">
-								<input type="text" name="searchText" placeholder="Search"/>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/header-bottom-->
-	</header><!--/header-->
+@include('layouts.tab')
 
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12">
-					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+				<div class="col bb_parent">
+					{{-- <div id="slider-carousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
 							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
@@ -147,7 +62,7 @@
 						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
 							<i class="fa fa-angle-right"></i>
 						</a>
-					</div>
+					</div> --}}
 
 				</div>
 			</div>
@@ -157,7 +72,7 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				{{-- <div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
@@ -206,18 +121,17 @@
 						</div><!--/shipping-->
 
 					</div>
-				</div>
+				</div> --}}
 
-				<div class="col-sm-9 padding-right">
+				<div class="col padding-right">
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
-
                         @foreach ($products as $product)
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            {{$product->id}}
+											{{$product->id}}
+											
                                             <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
                                             <h2>{{$product -> price}}</h2>
                                             <p>{{$product -> name}}</p>

@@ -22,19 +22,24 @@ Route::get('/', ["uses" => "ProductsController@index", "as"=> "homePage"]);
 //show all products
 Route::get('products', ["uses" => "ProductsController@shopAll", "as"=> "allProducts"]);
 
-//category for men
-Route::get('products/swimwears', ["uses" => "ProductsController@swimwearProducts", "as"=> "swimwearProducts"]);
+//category for swimwear
+// Route::get('products/swimwear', ["uses" => "ProductsController@swimwearProducts", "as"=> "swimwearProducts"]);
+//category for swimwear
+Route::get('swimwear', ["uses" => "ProductsController@swimwearProducts", "as"=> "swimwearProducts"]);
 
-//category for women
-Route::get('products/coverUps', ["uses" => "ProductsController@coverUpProducts", "as"=> "coverUpProducts"]);
+//category for coverups
+// Route::get('products/coverUps', ["uses" => "ProductsController@coverUpProducts", "as"=> "coverUpProducts"]);
+//category for coverups
+Route::get('coverUps', ["uses" => "ProductsController@coverUpProducts", "as"=> "coverUpProducts"]);
 
 //category for accessories
-Route::get('products/accessories', ["uses" => "ProductsController@accessoryProducts", "as"=> "accessoryProducts"]);
+// Route::get('products/accessories', ["uses" => "ProductsController@accessoryProducts", "as"=> "accessoryProducts"]);
+//category for accessories
+Route::get('accessories', ["uses" => "ProductsController@accessoryProducts", "as"=> "accessoryProducts"]);
 //--------end of filter-------
 
 //search
 Route::get('search', ["uses" => "ProductsController@search", "as"=> "searchProducts"]);
-
 
 //add to cart products
 Route::get('product/addToCart/{id}',['uses'=>'ProductsController@addProductToCart', 'as'=>'AddToCartProduct']);
@@ -49,6 +54,9 @@ Route::get('product/deleteItemFromCart/{id}', ["uses" => "ProductsController@del
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//user profile
+Route::get('/userProfile', 'HomeController@showUserProfile')->name('userProfile');
 
 
 //**** ADMIN ****
@@ -97,6 +105,9 @@ Route::post('product/createNewOrder/',['uses'=>'ProductsController@createNewOrde
 
 //payment page
 Route::get('payment/paymentPage', ["uses"=> "Payment\PaymentsController@showPaymentPage", 'as'=> 'showPaymentPage']);
+
+//process payment & receipt page
+Route::get('payment/paymentReceipt/{paymentID}/{payerID}', ["uses"=> "Payment\PaymentsController@showPaymentReceipt", 'as'=> 'showPaymentReceipt']);
 
 //storage
 
