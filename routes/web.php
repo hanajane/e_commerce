@@ -36,7 +36,21 @@ Route::get('coverUps', ["uses" => "ProductsController@coverUpProducts", "as"=> "
 // Route::get('products/accessories', ["uses" => "ProductsController@accessoryProducts", "as"=> "accessoryProducts"]);
 //category for accessories
 Route::get('accessories', ["uses" => "ProductsController@accessoryProducts", "as"=> "accessoryProducts"]);
+
 //--------end of filter-------
+
+//****---swimwear filters----*****//
+    // Route::get('swimwearType', ["uses" => "ProductsController@swimwearTypeProducts", "as"=> "swimwearTypeProducts"]);
+    Route::get('multiway', ["uses" => "ProductsController@multiwayProducts", "as"=> "multiwayProducts"]);
+    Route::get('monokini', ["uses" => "ProductsController@monokiniProducts", "as"=> "monokiniProducts"]);
+    Route::get('twoPiece', ["uses" => "ProductsController@twoPieceProducts", "as"=> "twoPieceProducts"]);
+    Route::get('onePiece', ["uses" => "ProductsController@onePieceProducts", "as"=> "onePieceProducts"]);
+    Route::get('highNeck', ["uses" => "ProductsController@highNeckProducts", "as"=> "highNeckProducts"]);
+    Route::get('longLine', ["uses" => "ProductsController@longLineProducts", "as"=> "longLineProducts"]);
+    Route::get('oneShoulder', ["uses" => "ProductsController@oneShoulderProducts", "as"=> "oneShoulderProducts"]);
+    Route::get('sportTop', ["uses" => "ProductsController@sportTopProducts", "as"=> "sportTopProducts"]);
+
+/****end swimwear filters *****/
 
 //search
 Route::get('search', ["uses" => "ProductsController@search", "as"=> "searchProducts"]);
@@ -57,6 +71,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //user profile
 Route::get('/userProfile', 'HomeController@showUserProfile')->name('userProfile');
+
+//single product
+Route::get('/singleProduct/{id}', ["uses" => "ProductsController@showSingleProduct", 'as'=>'singleProduct']);
 
 
 //**** ADMIN ****
@@ -91,8 +108,11 @@ Route::get('product/increaseSingleProduct/{id}', ["uses"=>"ProductsController@in
 //decrease single product in cart
 Route::get('product/decreaseSingleProduct/{id}', ["uses"=>"ProductsCOntroller@decreaseSingleProduct", "as"=> "DecreaseSingleProduct"]); // always pass ID so we know what product to be executed : CRUD
 
+//swimwear type
+Route::get('admin/swimwearType', ["uses" => "Admin\AdminProductsController@swimwearTypeProducts", "as"=> "swimwearTypeProducts"]);
 
-// *** CHEACK OUT
+
+// *** CHECK OUT
 
 //create an order
 Route::get('product/createOrder/',['uses'=>'ProductsController@createOrder','as'=>'createOrder']);

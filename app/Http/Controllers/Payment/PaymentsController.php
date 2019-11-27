@@ -13,16 +13,11 @@ class PaymentsController extends Controller
 {
     //
 
-    public function index(){
-
-     /*   $products = [0=> ["name"=>"Iphone","category"=>"smart phones","price"=>1000],
-            1=> ["name"=>"Galaxy","category"=>"tablets","price"=>2000],
-            2=> ["name"=>"Sony","category"=>"TV","price"=>3000]];*/
-
+    public function index()
+    {
         $products = Product::paginate(3);
 
         return view("allproducts",compact("products"));
-
     }
 
     public function showPaymentPage()
@@ -47,7 +42,6 @@ class PaymentsController extends Controller
 
         private function storePaymentInfo($paypalPaymentID,$paypalPayerID)
         {
-
            $payment_info = Session::get('payment_info');
            $order_id = $payment_info['order_id'];
            $status = $payment_info['status'];
@@ -97,12 +91,12 @@ class PaymentsController extends Controller
     }
 
     private function validate_payment($paypalPaymentID, $paypalPayerID)
-{
+    {
 
-     $paypalEnv       = 'sandbox'; // Or 'production'
-     $paypalURL       = 'https://api.sandbox.paypal.com/v1/'; //change this to paypal live url when you go live
-     $paypalClientID  = 'Your_Client_id';
-     $paypalSecret   = 'Your_Secret';
+        $paypalEnv       = 'production'; // Or 'production'
+        $paypalURL       = 'https://api.paypal.com'; //change this to paypal live url when you go live
+        $paypalClientID  = 'ARhd0L1561f3oo4Sl1DdFaUJ70AXbYjeCPUU5e6Qsb5GSQmpPHPZdgR1F69xsbfS2-g0jp2UeGZjb5kh';
+        $paypalSecret   = 'EMsqKoxD7nayFtl4TsMq0a12gmHMieczOnUg1Ll92AmMZGTm7m36qh5NjezLY2E95AJtb96H5YKF_Cbj';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $paypalURL.'oauth2/token');

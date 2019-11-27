@@ -29,6 +29,38 @@
                 <input type="text" class="form-control" name="size" id="size" placeholder="size" value="{{$product->size}}" required>
             </div>
             <div class="form-group">
+               {{--  <ul class="nav navbar-nav collapse navbar-collapse">
+                    <li class="dropdown panel-title"><a href="#" class="panel-title">swimwear type<i class="fa fa-angle-down"></i></a> --}}
+                        {{-- @foreach ($products as $product)
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="shop.html">{{$product->swimwearType_id}}</a></li>
+                                {{-- <li><a href="login.html">Monokini</a></li>
+                                <li><a href="product-details.html">Two-piece</a></li>
+                                <li><a href="checkout.html">One-Piece</a></li>
+                                <li><a href="cart.html">High-Neck</a></li>
+                                <li><a href="login.html">Longline Bikini</a></li>
+                                <li><a href="login.html">One-Shoulder Top</a></li>
+                                <li><a href="login.html">Sport Top</a></li> --}}
+                            {{-- </ul> --}}
+                        {{-- @endforeach --}} 
+                            {{-- <ul role="menu" class="sub-menu">
+                                <li><a href="shop.html"></a></li>
+                                <li><a href="login.html">Monokini</a></li>
+                                <li><a href="product-details.html">Two-piece</a></li>
+                                <li><a href="checkout.html">One-Piece</a></li>
+                                <li><a href="cart.html">High-Neck</a></li>
+                                <li><a href="login.html">Longline Bikini</a></li>
+                                <li><a href="login.html">One-Shoulder Top</a></li>
+                                <li><a href="login.html">Sport Top</a></li>
+                            </ul> --}}
+                        {{-- </li>
+                    <li><a href="{{route('coverUpProducts')}}" class="panel-title">Cover ups</a></li>
+                    <li><a href="{{route('accessoryProducts')}}" class="panel-title">Accessories</a></li>
+                </ul> --}}
+                <label for="type">swimwear type</label>
+                <input type="text" class="form-control" name="swimwearType_id" id="price" placeholder="swimwear type" value="{{$product->v}}" required>
+            </div>
+            <div class="form-group">
                 <label for="type">Hashtags</label>
                 <input type="text" class="form-control" name="hashtags" id="price" placeholder="hashtags" value="{{$product->v}}" required>
             </div>

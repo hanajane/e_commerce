@@ -62,6 +62,59 @@ class ProductsController extends Controller
         return view("allProducts", compact("products"))->render();;
     }
 
+    //swimwear filters
+        //category for swimwear
+            // private function swimwearType($id){
+            //      $products = DB::table('products')->where('swimwearType_id', $id)->get();
+            //      return view("swimwear", compact("products"));
+            // }
+            // public function swimwearTypeProducts()
+            // {
+            //     return swimwearType(1);
+            // }
+            public function multiwayProducts()
+            {
+                $products = DB::table('products')->where('swimwearType_id', 1)->get();
+                return view("swimwear", compact("products"));
+            }
+            public function monokiniProducts()
+            {
+                $products = DB::table('products')->where('swimwearType_id', 2)->get();
+                return view("swimwear", compact("products"));
+            }
+            public function twoPieceProducts(Request $request)
+            {
+                $products = DB::table('products')->where('swimwearType_id', 3)->get();
+                return view("swimwear", compact("products"));
+            }
+            public function onePieceProducts()
+            {
+                $products = DB::table('products')->where('swimwearType_id', 4)->get();
+                return view("swimwear", compact("products"));
+            }
+            public function highNeckProducts()
+            {
+                $products = DB::table('products')->where('swimwearType_id', 5)->get();
+                return view("swimwear", compact("products"));
+            }
+            public function longLineProducts()
+            {
+                $products = DB::table('products')->where('swimwearType_id', 6)->get();
+                return view("swimwear", compact("products"));
+            }
+            public function oneShoulderProducts()
+            {
+                $products = DB::table('products')->where('swimwearType_id', 7)->get();
+                return view("swimwear", compact("products"));
+            }
+            public function sportTopProducts()
+            {
+                $products = DB::table('products')->where('swimwearType_id', 8)->get();
+                return view("swimwear", compact("products"));
+            }
+
+    //end swimwear filters
+
     public function addProductToCart(Request $request,$id)
     {
 //        $request->session()->forget("cart");
@@ -80,6 +133,14 @@ class ProductsController extends Controller
         return redirect()->route("allProducts");
     }
 
+//show single product
+    public function showSingleProduct($id)
+    {
+        $product = Product::find($id);
+        // return view('singleProduct', ['product' => $product]); //same result as the one below
+        return view('singleProduct')->with( 'product', $product );
+    }
+//show cart
     public function showCart()
     {
         $cart = Session::get('cart');
@@ -180,7 +241,16 @@ class ProductsController extends Controller
 
 //check out products
     public function checkOutProducts()
-    {
+    {       
+        $cart = Session::get('cart');  //get cart
+        if($cart)                       //if not empty
+        {
+            return view("checkOutProducts", ['cartItems' => $cart]); //passing data to checkout
+//            dump($cart);
+        }
+        // else {
+
+        // }
         return view('checkOutProducts');
     }
 

@@ -13,6 +13,7 @@
             <th>Type</th>
             <th>Price</th>
             <th>Size</th>
+            <th>swimwearType_id</th>
             <th>Hashtags</th>
             <th>Edit Image</th>
             <th>Edit</th>
@@ -26,12 +27,13 @@
     {{--   another way for displaying images
                 <td><img src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="{{asset ('storage')}}/product_images/{{$product['image']}}" width="100" height="100" style="max-height:220px" ></td>--}}
                 <td> <img src="{{ Storage::url('product_images/'.$product['image'])}}"
-                           alt="<?php echo Storage::url($product['image']); ?>" width="100" height="100" style="max-height:220px" >   </td>
+                alt="<?php echo Storage::url($product['image']); ?>" width="100" height="100" style="max-height:220px" >   </td>
                 <td>{{$product['name']}}</td>
                 <td>{{$product['description']}}</td>
                 <td>{{$product['type']}}</td>
                 <td>{{$product['price']}}</td>
                 <td>{{$product['size']}}</td>
+                <td>{{$product['swimweartype_id']}}</td>
                 <td>{{$product['hashtags']}}</td>
 
                 <td><a href="{{ route('adminEditProductImageForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit Image</a></td>

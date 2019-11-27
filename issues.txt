@@ -1,0 +1,14 @@
+ISSUES:
+
+edit admin product ---- editProductForm.blade
+		display dropdown
+
+display single product --------- cartProducts.blade
+		display single product through $img and name
+
+if not logged in {} else {} ---------- idk
+
+FC9A11
+
+
+showPaymentReceipt()    paymentController ----------- keep the data intact until the end of the transact.

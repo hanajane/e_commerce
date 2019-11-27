@@ -56,8 +56,12 @@
                 <input type="text" class="form-control" name="size" id="size" placeholder="size" required>
             </div>
             <div class="form-group">
+                <label for="type">Swimwear Type</label>
+                <input type="text" class="form-control" name="swimwearType_id" id="size" placeholder="Swimwear Type" required>
+            </div>
+            <div class="form-group">
                 <label for="type">Hashtags</label>
-                <input type="text" class="form-control" name="hashtags" id="size" placeholder="size" required>
+                <input type="text" class="form-control" name="hashtags" id="Hashtags" placeholder="Hashtags" required>
             </div>
             <button type="submit" name="submit" class="btn btn-default">Submit</button>
         </form>

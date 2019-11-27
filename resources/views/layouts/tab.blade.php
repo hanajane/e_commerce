@@ -50,17 +50,17 @@
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li class="{{ (request()->is('products')) ? 'headTab' : '' }}"><a href="{{route('allProducts')}}" class="panel-title">Shop All</a></li>
-                                <li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('swimwearProducts')}}" class="panel-title">Swimwears</a></li>
-								<li class="dropdown"><a href="#" class="panel-title">Swimwears<i class="fa fa-angle-down"></i></a>
+                                {{-- <li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('swimwearProducts')}}" class="panel-title">Swimwears</a></li> --}}
+								<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }} dropdown"><a href="{{route('swimwearProducts')}}" class="panel-title">Swimwear<i class="fa fa-angle-down"></i></a>
                                    <ul role="menu" class="sub-menu">
-									   <li><a href="shop.html">Multi-Way</a></li>
-										<li><a href="login.html">Monokini</a></li>
-										<li><a href="product-details.html">Two-piece</a></li>
-										<li><a href="checkout.html">One-Piece</a></li>
-										<li><a href="cart.html">High-Neck</a></li>
-										<li><a href="login.html">Longline Bikini</a></li>
-										<li><a href="login.html">One-Shoulder Top</a></li>
-										<li><a href="login.html">Sport Top</a></li>
+									   	<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('multiwayProducts')}}">Multi-Way</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('monokiniProducts')}}">Monokini</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('twoPieceProducts')}}">Two-piece</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('onePieceProducts')}}">One-Piece</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('highNeckProducts')}}">High-Neck</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('longLineProducts')}}">Longline Bikini</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('oneShoulderProducts')}}">One-Shoulder Top</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('sportTopProducts')}}">Sport Top</a></li>
                               		</ul>
 	                             </li>
                                 <li class="{{ (request()->is('coverUps')) ? 'headTab' : '' }}"><a href="{{route('coverUpProducts')}}" class="panel-title">Cover ups</a></li>
@@ -106,14 +106,14 @@
                                 <li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><h4 class="panel-title"><a href="{{route('swimwearProducts')}}">Swimwears</a></h4></li>
 								<li class="dropdown panel-title"><a href="#">Swimwears<i class="fa fa-angle-down"></i></a>
                                    <ul role="menu" class="sub-menu">
-									   <li><a href="shop.html">Multi-Way</a></li>
-										<li><a href="login.html">Monokini</a></li>
-										<li><a href="product-details.html">Two-piece</a></li>
-										<li><a href="checkout.html">One-Piece</a></li>
-										<li><a href="cart.html">High-Neck</a></li>
-										<li><a href="login.html">Longline Bikini</a></li>
-										<li><a href="login.html">One-Shoulder Top</a></li>
-										<li><a href="login.html">Sport Top</a></li>
+									   	<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('multiwayProducts')}}">Multi-Way</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('monokiniProducts')}}">Monokini</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('twoPieceProducts')}}">Two-piece</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('onePieceProducts')}}">One-Piece</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('highNeckProducts')}}">High-Neck</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('longLineProducts')}}">Longline Bikini</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('oneShoulderProducts')}}">One-Shoulder Top</a></li>
+										<li class="{{ (request()->is('swimwear')) ? 'headTab' : '' }}"><a href="{{route('sportTopProducts')}}">Sport Top</a></li>
                               		</ul>
 	                             </li>
                                 <li class="{{ (request()->is('coverUps')) ? 'headTab' : '' }}"><h4 class="panel-title"><a href="{{route('coverUpProducts')}}">Cover ups</a></h4> </li>

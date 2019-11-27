@@ -15,30 +15,28 @@
                     <div class="col-sm-12 clearfix">
                         <div class="bill-to">
                             <p> Shipping/Bill To</p>
-                            <div class="form-one">
                               <div class="total_area">
                                 <ul>
-                                    {{-- <li>Payment Status
+                                    <li>Payment Status
                                     @if($payment_info['status'] == 'on_hold')
-
                                       <span>not paid yet</span>
-
                                     @endif
+
                                     </li>
                                     <li>Shipping Cost <span>Free</span></li>
                                     <li>Total <span>{{$payment_info['price']}}</span></li>
                                 </ul>
-                                <a class="btn btn-default update" href="">Update</a>
-                                <a class="btn btn-default check_out" id="paypal-button" >
-                                  </a>checkOutProducts --}}
-                                <ul>
-                                    <li class="hideElement"> Payment Status <span>{{$payment_info['status']}}</span></li>
+                                <a class="btn btn-default update" href="{{ route('cartProducts') }}">Update</a>
+                                <a class="btn btn-default check_out" id="paypal-button" >Pay now</a>
+                              </div>   
+                                {{-- <ul> --}}
+                                    {{-- <li class="hideElement"> Payment Status <span>{{$payment_info['status']}}</span></li> --}}
                                     {{-- <li> Quantity <span>{{$cartItems->totalQuantity}}</span></li> --}}
-                                    <li> Shipping Cost <span>Free</span></li>
+                                    {{-- <li> Shipping Cost <span>Free</span></li>
                                     <li> Total <span>{{$payment_info['price']}}</span></li>
                                 </ul>
                                     <a class="btn btn-default update" href="{{ route('cartProducts') }}">Update</a>
-                                    <a class="btn btn-default check_out" id="paypal-button" href="">Pay now</a>
+                                    <a class="btn btn-default check_out" id="paypal-button" href="">Pay now</a> --}}
                               </div>      
                             </div>
                             <div class="form-two">

@@ -11,8 +11,7 @@
             </div><!-- / page-header-content -->
         </div><!-- / container -->
     </div><!-- / page-header -->
-
-    <!-- content -->
+<!-- content -->
 
 <!-- shopping-cart -->
 <div id="checkout">
@@ -228,7 +227,3 @@
 <!--/#do_action-->
 
 @endsection
-
-
-
-

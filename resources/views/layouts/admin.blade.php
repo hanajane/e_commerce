@@ -46,7 +46,7 @@
                 <li><a href="{{route('adminCreateProductForm')}}">Insert</a></li>
                 <li><a href="/">Orders</a></li>
 {{--                {{route('ordersPanel')}}--}}
-                <li><a href="#">Edit</a></li>
+                <li><a href="{{route('adminDisplayProducts')}}">Edit</a></li>
                 <li><a href="#">Users</a></li>
                 <li><a href="#">Analytics</a></li>
             </ul>
