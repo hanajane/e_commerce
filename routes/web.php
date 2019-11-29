@@ -117,8 +117,14 @@ Route::get('admin/swimwearType', ["uses" => "Admin\AdminProductsController@swimw
 //create an order
 Route::get('product/createOrder/',['uses'=>'ProductsController@createOrder','as'=>'createOrder']);
 
+//process checkout page
+Route::get('product/checkOut/',['uses'=>'ProductsController@checkOut','as'=>'checkOut']);
+
 //check out products
 Route::get('product/checkOutProducts/',['uses'=>'ProductsController@checkOutProducts','as'=>'checkOutProducts']);
+
+//check out guest products
+Route::get('product/checkOutGuest/',['uses'=>'ProductsController@checkOutGuestProducts','as'=>'checkOutGuestProducts']);
 
 //process checkout page
 Route::post('product/createNewOrder/',['uses'=>'ProductsController@createNewOrder','as'=>'createNewOrder']);

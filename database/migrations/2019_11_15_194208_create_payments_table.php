@@ -13,17 +13,17 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table)
-        {
-            $table->increments('id');
-            $table->timestamps();
+        // Schema::create('payments', function (Blueprint $table)
+        // {
+        //     $table->increments('id');
+        //     $table->timestamps();
             
-            $table->integer("order_id", 11);
-            $table->text("paypal_payment_id");
-            $table->text("paypal_payer_id");
-            $table->date("date");
-            $table->float("amount");
-        });
+        //     $table->integer("order_id", 11);
+        //     $table->text("paypal_payment_id");
+        //     $table->text("paypal_payer_id");
+        //     $table->date("date");
+        //     $table->float("amount");
+        // });
     }
 
     /**

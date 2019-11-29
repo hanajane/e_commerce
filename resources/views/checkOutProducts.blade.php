@@ -19,11 +19,7 @@
     <div class="container">
         <div class="row checkout-screen">
             <div class="col-sm-8 checkout-form">
-                @if (Auth::check())
-                    @else
-                        <p class="space-left have-account">Already have an account? <a href="/login" class="btn btn-link"><i class="lnr lnr-enter"></i><span>Login</span></a></p>
-                    @endif
-                {{-- <p class="space-left have-account">Already have an account? <a href="login-register.html" class="btn btn-link"><i class="lnr lnr-enter"></i><span>Login</span></a></p> --}}
+              
                     <form class="" action="{{ route('createNewOrder') }}" method="post">
                         {{csrf_field()}}
                         <div class="row">
@@ -77,7 +73,7 @@
 
             <div class="col-sm-4 checkout-total">
                 <ul>
-                    <li><h4>Cart Total: <span>{{$cartItems->totalPrice}}</span></h4></li>
+                    <li><h4>Cart Total: <span>${{$cartItems->totalPrice}}</span></h4></li>
                     <li><h5>Cart Total Item(s): <span>{{$cartItems->totalQuantity}}</h5></span></li>
                 </ul>
                     <p>* The price includes Worldwide shipping and taxes.</p>

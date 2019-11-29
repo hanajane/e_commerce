@@ -36,7 +36,7 @@ class PaymentsController extends Controller
         }
         //delete cart
         Session::forget("cart");
-        Session::flush();
+        // Session::flush();
     }
 
 
@@ -61,7 +61,7 @@ class PaymentsController extends Controller
 
        //update payment status in orders table to "paid"
        
-       DB::table('orders')->where('order_id', $order_id)->update(['status' => 'paid']);
+       DB::table('orders')->where('id', $order_id)->update(['status' => 'paid']); // updating table 'orders'. getting the currect status(on_hold) to paid in the current order_id
        
       }
     }
@@ -80,7 +80,8 @@ class PaymentsController extends Controller
 
             //delete payment_info from the session
             Session::forget('payment_info');
-            Session::flush();
+            Session::forget("cart");
+            // Session::flush();
 
             return view('payment.paymentReceipt', ['payment_receipt' => $payment_receipt]);
         }
@@ -92,7 +93,6 @@ class PaymentsController extends Controller
 
     private function validate_payment($paypalPaymentID, $paypalPayerID)
     {
-
         $paypalEnv       = 'production'; // Or 'production'
         $paypalURL       = 'https://api.paypal.com'; //change this to paypal live url when you go live
         $paypalClientID  = 'ARhd0L1561f3oo4Sl1DdFaUJ70AXbYjeCPUU5e6Qsb5GSQmpPHPZdgR1F69xsbfS2-g0jp2UeGZjb5kh';
@@ -137,19 +137,59 @@ class PaymentsController extends Controller
     
     }
 
-    public function showCart()
+        //create order
+    public function createOrder()
     {
         $cart = Session::get('cart');
 
         //cart is not empty
-        if($cart)
-        {
-            return view('cartproducts',['cartItems'=> $cart]);
-            //cart is empty
+        if($cart) {
+        // dump($cart);
+            $date = date('Y-m-d H:i:s');
+            $newOrderArray = array("status"=>"on_hold","date"=>$date,"del_date"=>$date,"price"=>$cart->totalPrice);
+            $created_order = DB::table("orders")->insert($newOrderArray);
+            $order_id = DB::getPdo()->lastInsertId();;
+
+            foreach ($cart->items as $cart_item)
+            {
+                $item_id = $cart_item['data']['id'];
+                $item_name = $cart_item['data']['name'];
+                $item_price = $cart_item['data']['price'];
+                $newItemsInCurrentOrder = array("item_id"=>$item_id,"order_id"=>$order_id,"item_name"=>$item_name,"item_price"=>$item_price);
+                $created_order_items = DB::table("order_items")->insert($newItemsInCurrentOrder);
+            }
+
+            //delete cart
+            Session::forget("cart");
+            // Session::flush();
+            return redirect()->route("allProducts")->withsuccess("Thanks For Choosing Us");
         }
         else
         {
             return redirect()->route("allProducts");
         }
     }
+
+       public function getPaymentInfoByOrderId($order_id){
+   
+        $paymentInfo = DB::table('payments')->where('order_id', $order_id)->get();
+         return json_encode($paymentInfo[0]);
+   }
+
+    //duplicated from productsController
+    // public function showCart()
+    // {
+    //     $cart = Session::get('cart');
+
+    //     //cart is not empty
+    //     if($cart)
+    //     {
+    //         return view('cartproducts',['cartItems'=> $cart]);
+    //         //cart is empty
+    //     }
+    //     else
+    //     {
+    //         return redirect()->route("allProducts");
+    //     }
+    // }
 }

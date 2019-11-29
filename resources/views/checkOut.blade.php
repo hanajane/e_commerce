@@ -29,23 +29,37 @@
 			<div class="form">
 				
 				<div class="wrapper">
-					<h2>Sign In or Create an Accout</h2>
+					<h2>Secure Checkout</h2>
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="sub_title">
-							<h5>Sign In</h5>
+							<h5>I'm a new costumer</h5>
 						</div>
-						<div class="details" style="display:none">
-							<div class="">
-								<p><i class="fa fa-check-circle-o" aria-hidden="true"></i> You've Logged Out Successfuly</p>
+						<p>Register with us for a faster checkout and more. You can also checkout as a guest.</p>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="container-login100-form-btn p-t-10">
+									<a class="txt1" href="{{route('checkOutGuestProducts')}}"><button class="login100-form-btn">
+										Continue as a Guest</button>		
+									</a>
+								</div>
 							</div>
-							<div class="">
-								<p><i class="fa fa-check-circle-o" aria-hidden="true"> </i>You need to login to access this website</p>
+							<div class="col-sm-6">
+								<div class="container-login100-form-btn p-t-10">
+									<a class="txt1" href="{{route('register')}}"><button class="login100-form-btn">
+										Create a new accounts</button>		
+									</a>
+								</div>
 							</div>
 						</div>
-						<a id="more" href="#" onclick="$('.details').slideToggle(function(){$('#more').html($('.details').is(':visible')?'See Less Details':'See More Details');});">See More Details</a>
+					</div>
+					<div class="col-sm-6">
+						<div class="sub_title">
+							<h5>I already have an account</h5>
+						</div>
 						<div class="">
+							<p>To continue, Please enter your E-mail address and password
 						</div>
 							<form  class="login100-form validate-form" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
 								@csrf
@@ -97,25 +111,6 @@
 								</a>
 							</div>
 						</form>
-					</div>
-					<div class="col-sm-6">
-						<div class="sub_title">
-							<h5>Create a New Account</h5>
-						</div>
-						<p>Create an account with us and you'll be able to:
-							<ul>
-								<li><i class="fa fa-long-arrow-right"></i>	Check out faster</li>
-								<li><i class="fa fa-long-arrow-right"></i>	Save multiple shipping addresses</li>
-								<li><i class="fa fa-long-arrow-right"></i>	Access your order history</li>
-								<li><i class="fa fa-long-arrow-right"></i>	Track new orders</li>
-								<li><i class="fa fa-long-arrow-right"></i>	Save items to your wish list</li>
-							</ul>
-						</p>
-					<div class="container-login100-form-btn p-t-10">
-						<a class="txt1" href="{{route('register')}}"><button class="login100-form-btn">
-							Create a new account			</button>		
-						</a>
-					</div>
 					</div>
 				</div>
 			</div>

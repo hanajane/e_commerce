@@ -78,9 +78,12 @@
             </div><!-- / cart-total -->
 
             <div class="col-sm-6 cart-checkout">
+                @if (Auth::check())
+                    <a href="{{ route('checkOutProducts') }}" class="btn btn-primary-filled btn-rounded"><i class="lnr lnr-exit"></i> <span>Proceed to Checkout</span></a>
+                @else
+                <a href="{{ route('checkOut') }}" class="btn btn-primary-filled btn-rounded"><i class="lnr lnr-exit"></i> <span>Proceed to Checkout</span></a>
+                @endif
                 <a href="{{ route('allProducts') }}" class="btn btn-default-filled btn-rounded"><i class="lnr lnr-cart"></i> <span>Continue Shopping</span></a>
-                <a href="{{ route('checkOutProducts') }}" class="btn btn-primary-filled btn-rounded"><i class="lnr lnr-exit"></i> <span>Proceed to Checkout</span></a>
-            
                 <div class="coupon cart-checkout">
                     <div class="input-group">
                         <input type="text" class="form-control rounded" id="coupon-code" placeholder="Coupon Code">

@@ -82,7 +82,7 @@ class ProductsController extends Controller
                 $products = DB::table('products')->where('swimwearType_id', 2)->get();
                 return view("swimwear", compact("products"));
             }
-            public function twoPieceProducts(Request $request)
+            public function twoPieceProducts()
             {
                 $products = DB::table('products')->where('swimwearType_id', 3)->get();
                 return view("swimwear", compact("products"));
@@ -239,10 +239,27 @@ class ProductsController extends Controller
         }
     }
 
+
+//initiate checkout
+    public function checkOut()
+    {
+        $cart = Session::get('cart');  //get cart
+
+        if($cart)                       //if not empty
+        {
+            return view("checkOut", ['cartItems' => $cart]); //passing data to checkout
+//            dump($cart);
+        }
+        else {
+            return view("checkOut"); 
+        }
+    }
+
 //check out products
     public function checkOutProducts()
     {       
         $cart = Session::get('cart');  //get cart
+
         if($cart)                       //if not empty
         {
             return view("checkOutProducts", ['cartItems' => $cart]); //passing data to checkout
@@ -252,6 +269,32 @@ class ProductsController extends Controller
 
         // }
         return view('checkOutProducts');
+    }
+
+//        public function checkOutProducts()
+//     {       
+//         $cart = Session::get('cart');  //get cart
+//         if($cart)                       //if not empty
+//         {
+//             return view("checkOutProducts", ['cartItems' => $cart]); //passing data to checkout
+// //            dump($cart);
+//         }
+//         // else {
+
+//         // }
+//         return view('checkOutProducts');
+//     }
+
+//checkout guest
+    public function checkOutGuestProducts()
+    {      
+        $cart = Session::get('cart');  //get cart
+
+        if($cart)                       //if not empty
+        {
+            return view("checkOutGuest", ['cartItems' => $cart]); //passing data to checkout
+            //dump($cart);
+        }
     }
 
 //check our proccess
@@ -269,28 +312,32 @@ class ProductsController extends Controller
        $province_state  = $request->input('province_state');
        $zip_postal      = $request->input('zip_postal');
        $country         = $request->input('country');
+    //    $user_id         = $request->input('user_id');
 
     //check if user is logged in or not
-    //    $isUserLoggedIn = Auth::check();
+        $isUserLoggedIn = Auth::check();
 
-    //   if($isUserLoggedIn)
-    //   {
-    //   	//get user id
-    //      $user_id = Auth::id();  //OR $user_id = Auth:user()->id;
-
-    //   }
-    //   else
-    //   {
-    //   	//user is guest (not logged in OR Does not have account)
-    //     $user_id = 0;
-    //   }
+        if($isUserLoggedIn)
+        {
+            //get user id
+            $user_id = Auth::id();  //OR $user_id = Auth:user()->id;
+        }
+        else
+        {
+            //user is guest (not logged in OR Does not have account)
+            $user_id = 0;
+        }
+            // if ($user_id = 0)
+            // {
+            // $payment_info['user_id'] = "Guest";
+            // }
       
     //cart is not empty
         if($cart)
         {
     // dump($cart);
         $date = date('Y-m-d H:i:s');
-        $newOrderArray = array("status"=>"on_hold","date"=>$date,"del_date"=>$date,"price"=>$cart->totalPrice,
+        $newOrderArray = array("user_id" => $user_id, "status" => "on_hold","date"=>$date,"del_date"=>$date,"price"=>$cart->totalPrice,
         "first_name"=>$first_name, "last_name"=>$last_name, "email"=> $email, 'phone'=>$phone, "address_1"=>$address_1, "address_2"=>$address_2, 'city'=>$city,'province_state'=>$province_state,'zip_postal'=>$zip_postal, 'country'=>$country);
         
         $created_order = DB::table("orders")->insert($newOrderArray);
@@ -308,8 +355,8 @@ class ProductsController extends Controller
             //send the email
 
             //delete cart
-            Session::forget("cart");
-            Session::flush();
+            // Session::forget("cart");
+            // Session::flush();
 
             $payment_info =  $newOrderArray;
             $payment_info['order_id'] = $order_id;
@@ -325,4 +372,20 @@ class ProductsController extends Controller
         print_r('error');
         }
    }
+        public function getPaymentInfoByOrderId($order_id)
+        {
+    
+            $paymentInfo = DB::table('payments')->where('order_id', $order_id)->get();
+            return json_encode($paymentInfo[0]);
+        }
+
+        private function sendMail()
+        {
+        $user = Auth::user();
+        $cart = Session::get('cart');
+        
+        if($cart != null && $user != null ){
+            Mail::to($user)->send(new OrderCreatedEmail($cart));
+        }
+    }
 }

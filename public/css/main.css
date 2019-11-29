@@ -42,9 +42,10 @@ a {
     transition: 300ms;
 }
 
-h1, h2, h3{
+h1, h2, h3, h4{
     font-family: 'Sorts Mill Goudy', serif!important;
-} h4, h5, h6 {
+} 
+ h5, h6 {
     font-family: 'Raleway', sans-serif;
 }
 
@@ -1938,6 +1939,7 @@ transition: 0.3s;
 .shopper-info p,
 .bill-to p,
 .order-message p {
+    font-family: 'Sorts Mill Goudy', serif!important;
     color: #696763;
     font-size: 20px;
     font-weight: 300
@@ -2715,4 +2717,11 @@ button.shopBtn h2{
 }
 .wrapper {
     padding: 0 100px;
+}
+.bill-to li {
+    font-family: 'Sorts Mill Goudy', serif!important;
+}
+.h5{
+    font-weight: bold;
+    font-family: 'Sorts Mill Goudy', serif!important;
 }

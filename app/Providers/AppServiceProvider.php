@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-         View::share('Name',"Rick");
+         View::share('Name',"Jane");
          View::composer('*',function($view){
              $view->with('userData',Auth::user());
          });

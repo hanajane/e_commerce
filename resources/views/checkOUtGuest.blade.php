@@ -6,7 +6,7 @@
         <div class="container">
             <div class="page-header-content text-center">
                 <div class="page-header wsub">
-                    <h1 class="page-title fadeInDown animated first">Checkout</h1>
+                    <h1 class="page-title fadeInDown animated first">Billing Details</h1>
                 </div><!-- / page-header -->
             </div><!-- / page-header-content -->
         </div><!-- / container -->
@@ -20,8 +20,16 @@
             <div class="col-sm-8 checkout-form">
                 @if (Auth::check())
                     @else
-                        <p class="space-left have-account">Already have an account? <a href="/login" class="btn btn-link"><i class="lnr lnr-enter"></i><span>Login</span></a></p>
-                    @endif
+                       <div class="row">
+                           <div class="col-sm-6">
+                                <p class="space-left have-account">Already have an account? <a href="/login" class="btn btn-link"><i class="lnr lnr-enter"></i><span>Login</span></a></p>
+                           </div>
+                        <div class="col-sm-6">
+                            <p class="space-left have-account">Or create one! <a href="/register" class="btn btn-link"><i class="lnr lnr-enter"></i><span>Register</span></a></p>
+
+                        </div>                    
+                       </div>
+                        @endif
                 {{-- <p class="space-left have-account">Already have an account? <a href="login-register.html" class="btn btn-link"><i class="lnr lnr-enter"></i><span>Login</span></a></p> --}}
                     <form class="" action="{{ route('createNewOrder') }}" method="post">
                         {{csrf_field()}}
@@ -50,10 +58,10 @@
                                 </select>
                                 <select class="form-control" name="country">
                                     <optgroup label="State:">
-                                        <option value="s1">Canada</option>
-                                        <option value="s2">USA</option>
-                                        <option value="s3">United Kingdom</option>
-                                        <option value="s4">Mexico</option>
+                                        <option value="canada">Canada</option>
+                                        <option value="usa">USA</option>
+                                        <option value="united kingdom">United Kingdom</option>
+                                        <option value="mexico">Mexico</option>
                                     </optgroup>
                                 </select>
                             </div>
@@ -61,12 +69,9 @@
                         <div class="checkout-form-footer space-left space-right">
                             <textarea class="form-control" name="message" placeholder="Message"></textarea>
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col">
                                 <button class="btn btn-primary-filled btn-rounded" type="submit" name="submit" ><i class="lnr lnr-exit"></i><span>Proceed To Payment</span></button>
                                 </div>
-                                <div class="update-cart col-sm-6">
-                                    <button class="btn btn-default-filled btn-rounded" type="button"><i class="lnr lnr-sync"></i> <span>Update Info</span></button>
-                                </div><!-- / update-cart -->
                             </div>
      
                         </div>

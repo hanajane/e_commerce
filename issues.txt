@@ -12,3 +12,9 @@ FC9A11
 
 
 showPaymentReceipt()    paymentController ----------- keep the data intact until the end of the transact.
+
+
+
+-----------fixing cart with user type authentication
+
+-------cart allows 0 value, very wrong
