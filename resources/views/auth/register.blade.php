@@ -34,7 +34,7 @@
 					<p>Checkout faster at Beachy Bodies and save multiple addresses in your address book.</p>
 				</div>
 					<form  class="login100-form validate-form" method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                        @csrf
+                       {{ csrf_field() }}
 
 						<div class="row">
 							<div class="col">
@@ -73,17 +73,17 @@
 								<div class="">
 								<h5>Shipping Details</h5>
 							</div>
-							<div class="wrap-input100 validate-input m-b-10" data-validate = "Name is required">
-								<input for="name" class="input100" id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="{{ __('First name') }}" required autofocus>
+							<div class="wrap-input100 validate-input m-b-10" data-validate = "First Name is required">
+								<input for="first_name" class="input100" id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" placeholder="{{ __('First name') }}" required >
 									@if ($errors->has('name'))
 										<span class="invalid-feedback" role="alert">
-											<strong>{{ $errors->first('name') }}</strong>
+											<strong>{{ $errors->first('first_name') }}</strong>
 										</span>
 									@endif
 							
 							</div>
 							<div class="wrap-input100 validate-input m-b-10" data-validate = "Last Name is required">
-								<input for="last_name" class="input100" id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" placeholder="{{ __('Last name') }}" required autofocus>
+								<input for="last_name" class="input100" id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" placeholder="{{ __('Last name') }}" required >
 									@if ($errors->has('name'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('last_name') }}</strong>
@@ -92,7 +92,7 @@
 						
 							</div>
 							<div class="wrap-input100 validate-input m-b-10" data-validate = "Address is required">
-								<input for="address_1" class="input100" id="address_1" type="text" class="form-control{{ $errors->has('address_1') ? ' is-invalid' : '' }}" name="address_1" value="{{ old('address_1') }}" placeholder="{{ __('Address') }}" required autofocus>
+								<input for="address_1" class="input100" id="address_1" type="text" class="form-control{{ $errors->has('address_1') ? ' is-invalid' : '' }}" name="address_1" value="{{ old('address_1') }}" placeholder="{{ __('Address') }}" required >
 									@if ($errors->has('address_1'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('address_1') }}</strong>
@@ -100,10 +100,10 @@
 									@endif
 							</div>
 							<div class="wrap-input100 validate-input m-b-10">
-								<input for="address_2" class="input100" id="address_2" type="text" name="address_2" value="{{ old('address_2') }}" placeholder="{{ __('Address 2') }}" autofocus>
+								<input for="address_2" class="input100" id="address_2" type="text" name="address_2" value="{{ old('address_2') }}" placeholder="{{ __('Address 2') }}" >
 							</div>
 								<div class="wrap-input100 validate-input m-b-10" data-validate = "First Name is required">
-								<input for="city" class="input100" id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" placeholder="{{ __('City') }}" required autofocus>
+								<input for="city" class="input100" id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ old('city') }}" placeholder="{{ __('City') }}" required >
 									@if ($errors->has('city'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('city') }}</strong>
@@ -111,22 +111,31 @@
 									@endif
 							</div>
 							<div class="wrap-input100 validate-input m-b-10" data-validate = "State / Province is required">
-								<input for="state_province" class="input100" id="state_province" type="text" class="form-control{{ $errors->has('state_province') ? ' is-invalid' : '' }}" name="state_province" value="{{ old('state_province') }}" placeholder="{{ __('State / Province') }}" required autofocus>
+								<input for="state_province" class="input100" id="state_province" type="text" class="form-control{{ $errors->has('state_province') ? ' is-invalid' : '' }}" name="state_province" value="{{ old('state_province') }}" placeholder="{{ __('State / Province') }}" required >
 									@if ($errors->has('state_province'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('state_province') }}</strong>
 										</span>
 									@endif
 							</div>
+							<div class="wrap-input100 validate-input m-b-10" data-validate = "State / Province is required">
+								<input for="zip_postal" class="input100" id="zip_postal" type="text" class="form-control{{ $errors->has('zip_postal') ? ' is-invalid' : '' }}" name="zip_postal" value="{{ old('zip_postal') }}" placeholder="{{ __('Zip / Postal') }}" required >
+									@if ($errors->has('zip_postal'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('zip_postal') }}</strong>
+										</span>
+									@endif
+							</div>
 							<div class="wrap-input100 validate-input m-b-10" data-validate = "Country is required">
-								<select for="country" class="input100" id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}" placeholder="{{ __('Country') }}" required autofocus>
+								<input for="country" class="input100" id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ old('country') }}" placeholder="{{ __(' Country') }}" required >
+								{{-- <select for="country" class="input100" id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" placeholder="{{ __('Country') }}" required >
 									<optgroup label="State:">
-										<option value="s1">Canada</option>
-										<option value="s2">USA</option>
-										<option value="s3">United Kingdom</option>
-										<option value="s4">Mexico</option>
+										<option value="{{ old('s1') }}">Canada</option>
+										<option value="{{ old('s1') }}">USA</option>
+										<option value="{{ old('s3') }}">United Kingdom</option>
+										<option value="{{ old('s4') }}">Mexico</option>
 									</optgroup>
-								</select>
+								</select> --}}
 										@if ($errors->has('country'))
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $errors->first('country') }}</strong>
@@ -135,6 +144,13 @@
 							</div>
 						</div>
 						</div>
+							{{-- <div class="form-check">
+								<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+								<label class="form-check-label" for="remember">
+									{{ __('Remember me') }}
+								</label>
+							</div> --}}
 					<div class="container-login100-form-btn p-t-10">
 						<button type="submit" class="login100-form-btn">
                                     {{ __('Register') }}

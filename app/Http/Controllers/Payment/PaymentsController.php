@@ -22,18 +22,26 @@ class PaymentsController extends Controller
 
     public function showPaymentPage()
     {
+        
+        // $shipping_method = Input::get('shipping_method');
+        $shipping_methods = DB::table('shipping_methods')->where('id', $shipping_method)->get();
+
+        $cart = Session::get('cart');
         $payment_info = Session::get('payment_info');
+        $product_info = Session::get('product_info');
 
         //cart is not paid yet
         if($payment_info['status'] == 'on_hold')
         {
-            return view('payment.paymentPage',['payment_info'=> $payment_info]);
+            return view('payment.paymentPage', ['payment_info'=> $payment_info, 'product_info'=> $product_info, 'cartItems' => $cart, 'shipping_methods' => $shipping_methods]); //passing arrays to the view paymentPage
+            
         }
         //cart is empty
         else 
         {
             return redirect()->route("allProducts");
         }
+
         //delete cart
         Session::forget("cart");
         // Session::flush();
@@ -90,6 +98,14 @@ class PaymentsController extends Controller
             return redirect()->route("allProducts");
         }
     }
+
+    //shipping method
+    // public function shippingMethod(Request $request)
+    // {
+    //     $shipping_method = Input::get('shipping_method');
+    //     $shipping_methods = DB::table('shipping_methods')->where('id', $shipping_method)->get();
+    //     // ('id', $shipping_method)->get();
+    // }
 
     private function validate_payment($paypalPaymentID, $paypalPayerID)
     {
@@ -175,6 +191,22 @@ class PaymentsController extends Controller
         $paymentInfo = DB::table('payments')->where('order_id', $order_id)->get();
          return json_encode($paymentInfo[0]);
    }
+
+   //show cart
+public function showUpdateCart()
+{
+    $cart = Session::get('cart');
+        if($cart)
+        {
+            return view("updateCart", ['cartItems' => $cart]);
+//            dump($cart);
+        }
+        else
+        {
+            return redirect()->route("allProducts");
+//            echo "cart is empty";
+        }
+}
 
     //duplicated from productsController
     // public function showCart()

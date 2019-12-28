@@ -19,10 +19,29 @@
     <div class="container">
         <div class="row checkout-screen">
             <div class="col-sm-8 checkout-form">
-              
+                <h4> Ship to this address?</h4>
                     <form class="" action="{{ route('createNewOrder') }}" method="post">
                         {{csrf_field()}}
-                        <div class="row">
+
+                        <div class="col-sm-10 account-info">
+                            <div id="personal-info" class="account-info-content">
+                                <h4>Personal Info <span class="pull-right"></h4>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-8 col-md-10">
+                                        <p>Full Name: <span name="first_name">{{ $userData->first_name }} </span><span name="last_name">{{ $userData->last_name }}<span></p>
+                                        <p>Email: <span name="email">{{ $userData->email }}</span></p>
+                                        <p>Phone: <span name="phone">{{ $userData->phone }}</span></p>
+                                        <p>Address: <span name="address_1">{{ $userData->address_1 }}</span></p>
+                                        <p>Address 2: <span name="address_2">{{ $userData->address_2 }}</span></p>
+                                        <p>State / Province: <span name="state_province">{{ $userData->state_province }}</span></p>
+                                        <p>City: <span name="city">{{ $userData->city }}</span></p>
+                                        <p>ZIP Code: <span name="country">{{ $userData->zip_postal }}</span></p><p>Country: <span>{{ $userData->country }}</span></p>
+                                    </div>
+                                </div><!-- / row -->
+                            </div><!-- / personal-info -->
+                            <textarea class="form-control" style="backgroud-color:red" name="message" placeholder="Message"></textarea>
+                        </div><!-- / account-info -->
+                        {{-- <div class="row">
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="first_name" placeholder="*First name" required>
                                 <input type="text" class="form-control" name="last_name" placeholder="*Last name" required>
@@ -39,7 +58,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="city" placeholder="*City" required>
-                                <input type="text" class="form-control" name="province_state" placeholder="*Province / State" required>
+                                <input type="text" class="form-control" name="state_province" placeholder="*Province / State" required>
                             </div>
                             
                             <div class="col-sm-6"> 
@@ -47,16 +66,15 @@
                                 </select>
                                 <select class="form-control" name="country">
                                     <optgroup label="State:">
-                                        <option value="s1">Canada</option>
-                                        <option value="s2">USA</option>
-                                        <option value="s3">United Kingdom</option>
-                                        <option value="s4">Mexico</option>
+                                        <option value="canada">Canada</option>
+                                        <option value="use">USA</option>
+                                        <option value="united kingdom">United Kingdom</option>
+                                        <option value="mexico">Mexico</option>
                                     </optgroup>
                                 </select>
                             </div>
-                        </div><!-- / row -->
+                        </div><!-- / row --> --}}
                         <div class="checkout-form-footer space-left space-right">
-                            <textarea class="form-control" name="message" placeholder="Message"></textarea>
                             <div class="row">
                                 <div class="col-sm-6">
                                 <button class="btn btn-primary-filled btn-rounded" type="submit" name="submit" ><i class="lnr lnr-exit"></i><span>Proceed To Payment</span></button>
@@ -73,12 +91,11 @@
 
             <div class="col-sm-4 checkout-total">
                 <ul>
-                    <li><h4>Cart Total: <span>${{$cartItems->totalPrice}}</span></h4></li>
-                    <li><h5>Cart Total Item(s): <span>{{$cartItems->totalQuantity}}</h5></span></li>
+                    <li><h4>Subtotal: <span>${{$cartItems->totalPrice}}</span></h4></li>
+                    <li><h5>Total Item(s): <span>{{$cartItems->totalQuantity}}</h5></span></li>
                 </ul>
-                    <p>* The price includes Worldwide shipping and taxes.</p>
-
-  
+                    <p style="font-size: 11px">* You get FREE shipping when you buy over $100 on products.<br />
+                        The FREE shipping applies at the end of checkout.</p>  
                 <div class="cart-total-footer">
                     <a href="{{ route ('cartProducts') }}" class="btn btn-default-filled btn-rounded"><i class="lnr lnr-arrow-left"></i><span>Back to Cart</span></a>
                     <a href="{{ route ('allProducts') }}" class="btn btn-primary-filled btn-rounded"><i class="lnr lnr-cart"></i><span>Back to Shop</span></a>
@@ -117,7 +134,7 @@
                                     <input type="text" name="address_1" placeholder="Address 1 *" required>
                                     <input type="text" name="address_2" placeholder="Address 2">
                                     <input type="text" name="city" placeholder="City *" required>
-                                    <input type="text" name="province_state" placeholder="Province / state *" required>
+                                    <input type="text" name="state_province" placeholder="Province / state *" required>
                                     {{-- <input type="text" name="country" placeholder="country *" required> --}}
                                     {{-- <input type="text" name="zip_postal" placeholder="Zip / Postal Code *" required>
 

@@ -26,31 +26,108 @@
                         <div class="bill-to">
                           
                           {{-- <p>Please review the contents of your order below and then choose how you'd like to pay for your order.</p> --}}
-                          <h4> Account Details</h4> 
+                          <h4 class=""> Account Details</h4> 
                           <ul>
                             <li>
-                              <span class="h5">Checking Out as a : </span>{{ ucfirst(trans($payment_info['user_id'])) }}
+                              <span class="h5">Checking Out as : </span>
+                              @if ($payment_info['user_id'] == 0) Guest
+                              @else {{$payment_info['email']}} @endif
                             </li>
                           </ul> 
-                          <h4> Shipping/Bill To</h4>
+                          <h4 class="orderConfMargins"> Shipping/Bill To</h4>
                             <div class="">
                               <ul>
                                   <li><span class="h5">Name : </span>{{ ucfirst(trans($payment_info['first_name'])) }} {{ ucfirst(trans($payment_info['last_name']))}}</li>
-                                  <li><span class="h5">Address : </span>{{ ucfirst(trans($payment_info['address_1'])) }} {{ $payment_info['address_2'] }} {{ ucfirst(trans($payment_info['city'])) }} <br /> {{ ucfirst(trans($payment_info['province_state'])) }}, {{ ucfirst(trans($payment_info['country'])) }} ({{ ucfirst(trans($payment_info['zip_postal'])) }})</li>
+                                  <li><span class="h5">Address : </span>{{ ucfirst(trans($payment_info['address_1'])) }} {{ $payment_info['address_2'] }} {{ ucfirst(trans($payment_info['city'])) }} <br /> {{ ucfirst(trans($payment_info['state_province'])) }}, {{ ucfirst(trans($payment_info['country'])) }} ({{ ucfirst(trans($payment_info['zip_postal'])) }})</li>
                               </ul>
-                                <a class="btn btn-default update" onclick="history.go(-1);">Update Billing Info</a>
+                                @if (Auth::check())
+                                <a href="{{ route('checkOutGuestProducts') }}" class="btn btn-default update">{ FIX REGISTER INFO}</a>
+                                @else
+                                <a href="{{ route('checkOutGuestProducts') }}" class="btn btn-default update">Update Billing Info</a>
+                                @endif
+                               
                             </div>
+                            <h4 class="orderConfMargins"> Order Details</h4>
+                              <div class="">
+                              <!-- shopping cart table -->
+                                <table class="shopping-cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="image">&nbsp;</th>
+                                            <th></th>
+                                            <th>Qty</th>
+                                            <th>Item Price</th>
+                                            <th>Item Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($cartItems->items as $item)
+                                            <tr class="cart-item">
+                                                <td class="image">
+                                                    <a href=""><img src="{{Storage::disk('local')->url('product_images/'.$item['data']['image'])}}" alt="item" width="100" height="100"></a>
+                                                </td>
+                                                <td><a href=""><h5>{{$item['data']['name']}}</h5></a>
+                                                    <p>{{$item['data']['size']}}</p>
+                                                </td>
+                                                  <td class="qty">
+                                                      <div class="cart_quantity_button">
+                                                              <input class="cart_quantity_input" type="text" name="quantity" value="{{$item['quantity']}}" autocomplete="off" size="2">
+                                                      </div>
+                                                  </td>
+                                                <td>${{$item['data']['price']}}</td>
+                                                <td>${{$item['totalSinglePrice']}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <!-- / shopping cart table -->
+                                <a class="btn btn-default update" href="{{ route('showUpdateCart') }}">Update Cart</a>
+                              </div>
                             <div class="total_area">
+                              
+                            <h4 class="orderConfMargins"> Confirm Order</h4>
                               <ul>
-                                  <li>Payment Status
+                                  {{-- <li>Payment Status
                                   @if($payment_info['status'] == 'on_hold')
                                     <span>not paid yet</span>
                                   @endif
-                                  </li>
-                                  <li>Shipping Cost <span>Free</span></li>
-                                  <li>Total <span>{{$payment_info['price']}}</span></li>
+                                  </li> --}}
+                                  {{-- <li>GST <span>{{}}</span><br />
+                                      QST <span>{{}}</span>
+                                  </li> --}}
+                                  @if ($payment_info['price'] > 100)
+                                    <li>Shipping Cost <span>Free</span></li>
+                                  @else
+                                    <li>Please choose the shipping method for your order:</li>
+
+                          {{--                                      
+                                  @foreach($result as $result)                                    
+                                      <tr class="success">    
+                                          <td>{{ Form::radio('result') }}
+                                          <td>{{ $result->name}}</td>                 
+                                          <td>{{ $result->code}}</td>                 
+                                      </tr>        --}}               
+                                  {{-- @endforeach  --}}
+                                {{-- @foreach($shipping_methods as $method)                                    
+                                  <tr class="success">    
+                                      <td>{{ Form::radio('shipping_method', $method->1) }}</td>
+                                      <td>{{ ('shipping_method', $method->2) }}</td>
+                                  </tr>       --}}
+
+                                    <input type="radio" class="flat" name="shipping_method"  value="1" 
+                                      {{-- {{ $shipping_methods->shipping_method == '1' ? 'checked' : '' }}  --}}
+                                      >
+                                      Standard Shipping $9.99 <br />
+
+                                    <input type="radio" value="2" class="flat" name="shipping_method"
+                                    {{-- {{ $shipping_methods->shipping_method == '2' ? 'checked' : '' }} --}}
+                                     >
+                                    Shipping with Tracking $19.99                    
+                               {{-- @endforeach   --}}
+                                 @endif 
+                                  <li>@if ($cartItems->totalQuantity > 1)</span>Total Items<span> @else Total Item @endif <span>{{ $cartItems->totalQuantity}}</span></li>
+                                  <li>Total <span>${{ $payment_info['price']}}</span></li>
                               </ul>
-                              <a class="btn btn-default update" href="{{ route('cartProducts') }}">Update Cart</a>
                               <a class="btn btn-default check_out" id="paypal-button" >Pay now</a>
                             </div>   
                                 {{-- <ul> --}}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Product; //use the Product model
 use Illuminate\Support\Facades\Storage;
@@ -15,19 +16,23 @@ class AdminProductsController extends Controller
     //display all products
     public function index()
     {
-        $products = Product::paginate(3);
+        $products = Product::paginate(10);
         return view("admin.displayProducts", ['products'=>$products]);
     }
 
     //store new product to database
     public  function sendCreateProductForm(Request $request) //somehow use $request to pass the post request
     {
+        // $product_type = DB::table('product_type')->get();
+        // $image = DB::table('product_image')->get();
+
         $name = $request->input('name');
         $description = $request->input('description');
-        $type = $request->input('type');
+        // $productType = $request->input('type');
         $price = $request->input('price');
-        $size = $request->input('size');
+        $swimwearSize_id = $request->input('swimwearSize_id');
         $swimwearType_id = $request->input('swimwearType_id');
+        $productType_id = $request->input('productType_id');
         $hashtags = $request->input('hashtags');
 
         Validator::make($request->all(), ['image' => "required|file|image|mimes:jpg,png,jpeg|max:5000"])->validate(); //required, to not to proceed without adding an image | type of file is file | mimes, are the extensions allowed
@@ -37,17 +42,24 @@ class AdminProductsController extends Controller
         $imageName = $stringImageReFormat. ".".$ext; // same image name as the name product
         $imageEncoded = File::get($request->image);  //use the File class to the image encoded version
         Storage::disk('local')->put('public/product_images/'.$imageName, $imageEncoded);  //another way of uploading an image
+        $newImage= array("imageName" => $imageName, "image" => $imageName); //array were updating
 
-        $newProductArray = array("name"=>$name, "description" => $description, "image"=> $imageName, "type" => $type, "price" => $price, "size"=> $size, "swimwearType_id" => $swimwearType_id, "hashtags" => $hashtags); //array were updating
+        if ($newImage)
+        {
+            DB::table("product_image")->insert($newImage);
+            $image_id = DB::getPdo()->lastInsertId(); //getting the ID of the last image inserted
+        }
+        $newProductArray = array("name"=>$name, "description" => $description, "price" => $price, "productSize_id" => $swimwearSize_id, "swimwearType_id" => $swimwearType_id, "productType_id" => $productType_id, "hashtags" => $hashtags, "productImage_id" => $image_id); //array were updating
 
         $created = DB::table('products')->insert($newProductArray); // inserts the new product
+
 
         if($created)    //to check if works or doesnt
         {
             return redirect()->route("adminDisplayProducts");
         }
         else{
-            return "product wast created"; //TO IMPROVE : create a new page for error
+            return "product was not created"; //TO IMPROVE : create a new page for error
         }
     }
 
@@ -95,11 +107,11 @@ class AdminProductsController extends Controller
     }
 
     //type of swimwear filter // ??
-    public function swimwearTypeProducts()
-    {
-        $products = DB::table('products')->where('swimwearType_id', "swimwearType_id")->get();
-        return view("adminEditProductForm", compact("products"));
-    }
+    // public function swimwearTypeProducts()
+    // {
+    //     $products = DB::table('products')->where('swimwearType_id', "swimwearType_id")->get();
+    //     return view("adminEditProductForm", compact("products"));
+    // }
 
     //ADMIN - update product
     public function updateProduct(Request $request, $id)
@@ -122,9 +134,18 @@ class AdminProductsController extends Controller
     }
 
     //ADMIN - create product form
-    public function createProductForm()
+    public function createProductForm(Request $request)
     {
-        return view('admin.createProductForm');
+         $product_type = DB::table('product_type')->get();
+         $swimwearType = DB::table('swimwearType')->get();
+         $swimwearSize = DB::table('productSize')->get();
+
+        $productType_info = $product_type;
+        $swimwearType_info = $swimwearType;
+        $swimwearSize_info = $swimwearSize;
+        $request->session()->put('productType_info', $productType_info, 'swimwearType_info', $swimwearType_info, 'swimwearSize_info', $swimwearSize_info);  // this is to send the variable to the view // function used: AdminProductForm
+
+        return view('admin.createProductForm', ['productType_info'=> $productType_info, 'swimwearType_info' => $swimwearType_info, 'swimwearSize_info' => $swimwearSize_info]);
     }
 
     //ADMIN delete product

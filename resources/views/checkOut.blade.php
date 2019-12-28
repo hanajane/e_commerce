@@ -37,22 +37,25 @@
 							<h5>I'm a new costumer</h5>
 						</div>
 						<p>Register with us for a faster checkout and more. You can also checkout as a guest.</p>
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="container-login100-form-btn p-t-10">
-									<a class="txt1" href="{{route('checkOutGuestProducts')}}"><button class="login100-form-btn">
-										Continue as a Guest</button>		
-									</a>
-								</div>
+							<div class="container-login100-form-btn p-t-10">
+								<a class="txt1" href="{{route('checkOutGuestProducts')}}"><button class="login100-form-btn">
+									Continue as a Guest</button>		
+								</a>
+							</div><br />
+							<div class="container-login100-form-btn p-t-10">
+								<p>Create an account with us and you'll be able to:
+									<ul>
+										<li><i class="fa fa-long-arrow-right"></i>	Check out faster</li>
+										<li><i class="fa fa-long-arrow-right"></i>	Save multiple shipping addresses</li>
+										<li><i class="fa fa-long-arrow-right"></i>	Access your order history</li>
+										<li><i class="fa fa-long-arrow-right"></i>	Track new orders</li>
+										<li><i class="fa fa-long-arrow-right"></i>	Save items to your wish list</li>
+									</ul>
+								</p>
+								<a class="txt1" href="{{route('register')}}"><button class="login100-form-btn">
+									Create a new accounts</button>		
+								</a>
 							</div>
-							<div class="col-sm-6">
-								<div class="container-login100-form-btn p-t-10">
-									<a class="txt1" href="{{route('register')}}"><button class="login100-form-btn">
-										Create a new accounts</button>		
-									</a>
-								</div>
-							</div>
-						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="sub_title">

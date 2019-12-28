@@ -1,0 +1,7 @@
+BUGS
+
+---you can switch up from a member to a guest by the url
+
+---print user shipping info to checkout products
+
+--------doing the $userData

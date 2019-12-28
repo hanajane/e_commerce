@@ -50,7 +50,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="city" placeholder="*City" required>
-                                <input type="text" class="form-control" name="province_state" placeholder="*Province / State" required>
+                                <input type="text" class="form-control" name="state_province" placeholder="*Province / State" required>
                             </div>
                             
                             <div class="col-sm-6"> 
@@ -81,12 +81,11 @@
 
             <div class="col-sm-4 checkout-total">
                 <ul>
-                    <li><h4>Cart Total: <span>{{$cartItems->totalPrice}}</span></h4></li>
-                    <li><h5>Cart Total Item(s): <span>{{$cartItems->totalQuantity}}</h5></span></li>
+                    <li><h4>Subtotal: <span>{{$cartItems->totalPrice}}</span></h4></li>
+                    <li><h5>Total Item(s): <span>{{$cartItems->totalQuantity}}</h5></span></li>
                 </ul>
-                    <p>* The price includes Worldwide shipping and taxes.</p>
-
-  
+                    <p style="font-size: 11px">* You get FREE shipping when you buy over $100 on products.<br />
+                        The FREE shipping applies at the end of checkout.</p>
                 <div class="cart-total-footer">
                     <a href="{{ route ('cartProducts') }}" class="btn btn-default-filled btn-rounded"><i class="lnr lnr-arrow-left"></i><span>Back to Cart</span></a>
                     <a href="{{ route ('allProducts') }}" class="btn btn-primary-filled btn-rounded"><i class="lnr lnr-cart"></i><span>Back to Shop</span></a>
@@ -125,7 +124,7 @@
                                     <input type="text" name="address_1" placeholder="Address 1 *" required>
                                     <input type="text" name="address_2" placeholder="Address 2">
                                     <input type="text" name="city" placeholder="City *" required>
-                                    <input type="text" name="province_state" placeholder="Province / state *" required>
+                                    <input type="text" name="state_province" placeholder="Province / state *" required>
                                     {{-- <input type="text" name="country" placeholder="country *" required> --}}
                                     {{-- <input type="text" name="zip_postal" placeholder="Zip / Postal Code *" required>
 

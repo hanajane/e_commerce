@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <h1>{!! Auth::user()->name !!}</h1>
+                    <h1>{!! Auth::user()->first_name !!}</h1>
                     <p>E-mail : {!! Auth::user()->email !!}</p>
 
                     <a href="{{ route('homePage')}}"  class="btn btn-warning">Main Website</a>{{--we dont have the route for delete because we dont need a page where we redirect to delete data as edits--}}

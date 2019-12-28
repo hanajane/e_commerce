@@ -8,7 +8,7 @@ class Product extends Model
 {
      protected $fillable =
      [
-        'name', 'description', 'image', 'price', 'type', 'swimwearType_id', 'hashtags'
+        'name', 'description', 'productImage_id', 'price', 'productType_id', 'swimwearType_id', 'productSize_id', 'hashtags'
      ];
 
      public function getPriceAttribute($value)

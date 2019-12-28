@@ -64,8 +64,8 @@ Route::get('cart', ["uses" => "ProductsController@showCart", "as"=> "cartProduct
 //delete items from the cart
 Route::get('product/deleteItemFromCart/{id}', ["uses" => "ProductsController@deleteItemFromCart", "as"=> "deleteItemFromCart"]);
 
-//user authentication
-Auth::routes();
+//USER AUTHENTICATION
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -75,23 +75,28 @@ Route::get('/userProfile', 'HomeController@showUserProfile')->name('userProfile'
 //single product
 Route::get('/singleProduct/{id}', ["uses" => "ProductsController@showSingleProduct", 'as'=>'singleProduct']);
 
+Route::group(['middleware' => ['restrictToAdmin']], function()
+    {
+        //display edit product form
+        Route::get('admin/editProductForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductForm", "as"=> "adminEditProductForm"]);
+
+        //display edit product image form
+        Route::get('admin/editProductImageForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductImageForm", "as"=> "adminEditProductImageForm"]);
+
+        //update product image
+        Route::post('admin/updateProductImage/{id}', ["uses"=>"Admin\AdminProductsController@updateProductImage", "as"=> "adminUpdateProductImage"]);
+
+        //update product existing data
+        Route::post('admin/updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
+
+    }
+
+);
 
 //**** ADMIN ****
 
 //admin panel
 Route::get('admin/products', ["uses"=>"Admin\AdminProductsController@index", "as"=> "adminDisplayProducts"])->Middleware('restrictToAdmin');
-
-//display edit product form
-Route::get('admin/editProductForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductForm", "as"=> "adminEditProductForm"]);
-
-//display edit product image form
-Route::get('admin/editProductImageForm/{id}', ["uses"=>"Admin\AdminProductsController@editProductImageForm", "as"=> "adminEditProductImageForm"]);
-
-//update product image
-Route::post('admin/updateProductImage/{id}', ["uses"=>"Admin\AdminProductsController@updateProductImage", "as"=> "adminUpdateProductImage"]);
-
-//update product existing data
-Route::post('admin/updateProduct/{id}', ["uses"=>"Admin\AdminProductsController@updateProduct", "as"=> "adminUpdateProduct"]);
 
 //display create product form
 Route::get('admin/createProductForm', ["uses"=>"Admin\AdminProductsController@createProductForm", "as"=> "adminCreateProductForm"]);
@@ -135,6 +140,12 @@ Route::get('payment/paymentPage', ["uses"=> "Payment\PaymentsController@showPaym
 //process payment & receipt page
 Route::get('payment/paymentReceipt/{paymentID}/{payerID}', ["uses"=> "Payment\PaymentsController@showPaymentReceipt", 'as'=> 'showPaymentReceipt']);
 
+//shows update cart items
+Route::get('updateCart', ["uses" => "Payment\PaymentsController@showUpdateCart", "as"=> "showUpdateCart"]);
+
+//shipping method
+Route::get('shipping_method', ["uses" => "Payment\PaymentsController@shippingMethod", "as"=> "shippingMethod"]);
+
 //storage
 
 Route::get('/testStorage', function()
@@ -167,3 +178,7 @@ Route::get('/testStorage', function()
 //    Artisan::call('cache:clear');
 //    return "Cache is cleared";
 //});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

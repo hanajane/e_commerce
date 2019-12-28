@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPersonalInfoToOrdersTable extends Migration
+class AddMessageToOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,7 @@ class AddPersonalInfoToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->text("last_name", 30);
-            $table->text("email", 30);
-            $table->string("phone", 30);
-            $table->text("address_1", 30);
-            $table->text("address_2", 30);
-            $table->string("city", 30);
-            $table->string("state_province", 50);
-            $table->text("zip_postal", 30);
-            $table->text("country", 30);
+            $table->mediumText("message", 100);
         });
     }
 
@@ -34,7 +26,7 @@ class AddPersonalInfoToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            //
+            $table->dropColumn('message');
         });
     }
 }

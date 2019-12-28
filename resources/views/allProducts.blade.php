@@ -17,7 +17,9 @@
 					<div class="col-xs-6 col-md-4 product">
 					<a href="{!! route('singleProduct',$product->id) !!}" class="product-link"></a>
 						<!-- / product-link -->
-							<img class="imageResp" src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
+						{{-- @foreach ($image as $image) --}}
+							<img class="imageResp" src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" /> <!--bug-->
+						{{-- @endforeach --}}
 							<!-- / product-image -->
 
 							<!-- product-hover-tools -->
@@ -37,7 +39,8 @@
 							</div><!-- / product-details -->
 					</div><!-- / product -->
 				@endforeach
-                    {{$products->links()}}
+					{{-- {{$products}} --}}
+					     {{$products->links()}}
 			
 				<!-- grid-resizer -->
 			<div class="col-xs-6 col-md-4 shuffle_sizer"></div>

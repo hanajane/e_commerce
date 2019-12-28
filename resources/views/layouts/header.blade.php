@@ -69,7 +69,7 @@
 							<ul class="nav navbar-nav">
                                 @if (Auth::check())
 								<li class="dropdown">
-									<a href="#"><i class="lnr lnr-user"></i> My account</a>
+									<a ><i class="lnr lnr-user"></i> My account</a>
                                    	<ul role="menu" class="sub-menu">
 									   <li><a href="{{ route('userProfile') }}">Personal Info and Payments</a></li>
 										{{-- <li><a href="login.html">Order History</a></li>

@@ -2725,3 +2725,7 @@ button.shopBtn h2{
     font-weight: bold;
     font-family: 'Sorts Mill Goudy', serif!important;
 }
+/*****margins and paddings*****/
+h4.orderConfMargins {
+    margin-top: 70px;
+}
