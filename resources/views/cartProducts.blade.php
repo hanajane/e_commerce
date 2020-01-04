@@ -18,7 +18,6 @@
         <!-- shopping cart table -->
         <table class="shopping-cart">
             <thead>
-                {{-- {{ $userData->name }} --}}
                 <tr>
                     <th class="image">&nbsp;</th>
                     <th></th>

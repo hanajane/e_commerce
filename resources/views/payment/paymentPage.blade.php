@@ -30,8 +30,8 @@
                           <ul>
                             <li>
                               <span class="h5">Checking Out as : </span>
-                              @if ($payment_info['user_id'] == 0) Guest
-                              @else {{$payment_info['email']}} @endif
+                              @if ($payment_info['user_id'] == 0) Guest | {{$payment_info['email']}}
+                              @else Member | {{$payment_info['email']}} @endif
                             </li>
                           </ul> 
                           <h4 class="orderConfMargins"> Shipping/Bill To</h4>
@@ -40,11 +40,11 @@
                                   <li><span class="h5">Name : </span>{{ ucfirst(trans($payment_info['first_name'])) }} {{ ucfirst(trans($payment_info['last_name']))}}</li>
                                   <li><span class="h5">Address : </span>{{ ucfirst(trans($payment_info['address_1'])) }} {{ $payment_info['address_2'] }} {{ ucfirst(trans($payment_info['city'])) }} <br /> {{ ucfirst(trans($payment_info['state_province'])) }}, {{ ucfirst(trans($payment_info['country'])) }} ({{ ucfirst(trans($payment_info['zip_postal'])) }})</li>
                               </ul>
-                                @if (Auth::check())
-                                <a href="{{ route('checkOutGuestProducts') }}" class="btn btn-default update">{ FIX REGISTER INFO}</a>
+                                {{-- @if (Auth::check())
+                                <a href="{{ route('checkOutProducts') }}" class="btn btn-default update">Update Billing Info</a>
                                 @else
                                 <a href="{{ route('checkOutGuestProducts') }}" class="btn btn-default update">Update Billing Info</a>
-                                @endif
+                                @endif --}}
                                
                             </div>
                             <h4 class="orderConfMargins"> Order Details</h4>
@@ -84,46 +84,58 @@
                                 <a class="btn btn-default update" href="{{ route('showUpdateCart') }}">Update Cart</a>
                               </div>
                             <div class="total_area">
-                              
+
+                            <h4 class="orderConfMargins"> Shipping Method </h4>
+                              <ul>
+                                @if ($payment_info['price'] > 100)
+                                  <li>Shipping Cost <span>Free</span></li>
+                                @else
+                                  <li>Please choose the shipping method for your order:</li>
+                                  @foreach($shipping_methods as $method)                                    
+                                    <input type="radio" name="result" value="{{$method->id}}" checked> &nbsp {{ $method->shipping_method }} &nbsp ${{ $method->shipping_cost }}<br />
+
+                                      {{-- <input type="radio" class="flat" name="shipping_method"  value="1" 
+                                        {{ $shipping_methods->shipping_method == '1' ? 'checked' : '' }} 
+                                        >
+                                        Standard Shipping $9.99 <br />
+
+                                      <input type="radio" value="2" class="flat" name="shipping_method"
+                                      {{ $shipping_methods->shipping_method == '2' ? 'checked' : '' }}
+                                        > 
+                                      Shipping with Tracking $19.99--}}
+                                  @endforeach 
+                                                        
+                                    {{-- @foreach($result as $result)                                    
+                                        <tr class="success">    
+                                            <td>{{ Form::radio('result') }}
+                                            <td>{{ $result->name}}</td>                 
+                                            <td>{{ $result->code}}</td>                 
+                                        </tr>                   
+                                    @endforeach  --}}
+
+                                    {{-- <li>Payment Status
+                                    @if($payment_info['status'] == 'on_hold')
+                                      <span>not paid yet</span>
+                                    @endif
+                                    </li> --}}
+                                    {{-- <li>GST <span>{{}}</span><br />
+                                        QST <span>{{}}</span>
+                                    </li> --}}
+
+                                    {{-- dropdown option --}}
+                                    {{-- <div class="form-group">
+                                        <label for="productType_id">Payment Method</label>
+                                        <select class="form-control m-bot15" name="shipping_method">
+                                            @if ($shipping_methods->count())
+                                                @foreach($shipping_methods as $method)
+                                                    <option value="{{ $method->id }}" {{ $method->id ? 'selected="selected"' : '' }}>{{ $method->shipping_method }}</option>    
+                                            @endforeach
+                                            @endif
+                                        </select>
+                                    </div> --}}
+                                </ul>
                             <h4 class="orderConfMargins"> Confirm Order</h4>
                               <ul>
-                                  {{-- <li>Payment Status
-                                  @if($payment_info['status'] == 'on_hold')
-                                    <span>not paid yet</span>
-                                  @endif
-                                  </li> --}}
-                                  {{-- <li>GST <span>{{}}</span><br />
-                                      QST <span>{{}}</span>
-                                  </li> --}}
-                                  @if ($payment_info['price'] > 100)
-                                    <li>Shipping Cost <span>Free</span></li>
-                                  @else
-                                    <li>Please choose the shipping method for your order:</li>
-
-                          {{--                                      
-                                  @foreach($result as $result)                                    
-                                      <tr class="success">    
-                                          <td>{{ Form::radio('result') }}
-                                          <td>{{ $result->name}}</td>                 
-                                          <td>{{ $result->code}}</td>                 
-                                      </tr>        --}}               
-                                  {{-- @endforeach  --}}
-                                {{-- @foreach($shipping_methods as $method)                                    
-                                  <tr class="success">    
-                                      <td>{{ Form::radio('shipping_method', $method->1) }}</td>
-                                      <td>{{ ('shipping_method', $method->2) }}</td>
-                                  </tr>       --}}
-
-                                    <input type="radio" class="flat" name="shipping_method"  value="1" 
-                                      {{-- {{ $shipping_methods->shipping_method == '1' ? 'checked' : '' }}  --}}
-                                      >
-                                      Standard Shipping $9.99 <br />
-
-                                    <input type="radio" value="2" class="flat" name="shipping_method"
-                                    {{-- {{ $shipping_methods->shipping_method == '2' ? 'checked' : '' }} --}}
-                                     >
-                                    Shipping with Tracking $19.99                    
-                               {{-- @endforeach   --}}
                                  @endif 
                                   <li>@if ($cartItems->totalQuantity > 1)</span>Total Items<span> @else Total Item @endif <span>{{ $cartItems->totalQuantity}}</span></li>
                                   <li>Total <span>${{ $payment_info['price']}}</span></li>

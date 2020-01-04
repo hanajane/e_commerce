@@ -38,7 +38,11 @@
 
                 <td><a href="{{ route('adminEditProductImageForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit Image</a></td>
                 <td><a href="{{ route('adminEditProductForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit</a></td>
+                @if($userData->admin_level == 1)
                 <td><a href="{{ route('adminDeleteProduct', ['id' => $product['id'] ])}}"  class="btn btn-warning">Remove</a></td> {{--                we dont have the route for delete because we dont need a page where we redirect to delete data as edits--}}
+                @else
+                <td><a href="#"  class="btn btn-warning"><p>X</p></td> {{--                we dont have the route for delete because we dont need a page where we redirect to delete data as edits--}}
+                @endif
             </tr>
         @endforeach
         </tbody>

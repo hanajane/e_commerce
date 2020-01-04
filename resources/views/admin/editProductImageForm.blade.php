@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('body')
-
+@if($userData->admin_level == 1)
     <div class="table-responsive">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -22,4 +22,7 @@
             <button type="submit" name="submit" class="btn btn-default">Submit</button>
         </form>
     </div>
+    @else
+        <div class="alert alert-danger"><p>Only Higher Admins can edit products</p></div>
+    @endif
 @endsection

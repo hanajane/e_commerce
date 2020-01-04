@@ -307,34 +307,33 @@ class ProductsController extends Controller
         // $tax_gst = .05;
         // $tax_qst = 0.095;
         // $total_tax = $tax_gst + $tax_qst;
-        $userDatas = Auth::user();
-    //    $first_name      = $request->input('first_name');
-    //    $last_name       = $request->input('last_name');
-    //    $email           = $request->input('email');
-    //    $phone           = $request->input('phone');
-    //    $address_1       = $request->input('address_1');
-    //    $address_2       = $request->input('address_2');
-    //    $city            = $request->input('city');
-    //    $state_province  = $request->input('state_province');
-    //    $zip_postal      = $request->input('zip_postal');
-    //    $country         = $request->input('country');
-    //    $message         = $request->input('message');
+       $first_name      = $request->input('first_name');
+       $last_name       = $request->input('last_name');
+       $email           = $request->input('email');
+       $phone           = $request->input('phone');
+       $address_1       = $request->input('address_1');
+       $address_2       = $request->input('address_2');
+       $city            = $request->input('city');
+       $state_province  = $request->input('state_province');
+       $zip_postal      = $request->input('zip_postal');
+       $country         = $request->input('country');
+       $message         = $request->input('message');
 
-    foreach ($userDatas as $userData)
-    {
-
-    $first_name      = $userData['first_name'];
-    $last_name       = $userData['last_name'];
-    $email           = $userData['email'];
-    $phone           = $userData['phone'];
-    $address_1       = $userData['address_1'];
-    $address_2       = $userData['address_2'];
-    $city            = $userData['city'];
-    $state_province  = $userData['state_province'];
-    $zip_postal      = $userData['zip_postal'];
-    $country         = $userData['country'];
-    $message         = $userData['message'];
-    }
+        // $userData = Auth::user();
+    // foreach ($userData as $userData)
+    // {
+    // $first_name      = $userData['first_name'];
+    // $last_name       = $userData['last_name'];
+    // $email           = $userData['email'];
+    // $phone           = $userData['phone'];
+    // $address_1       = $userData['address_1'];
+    // $address_2       = $userData['address_2'];
+    // $city            = $userData['city'];
+    // $state_province  = $userData['state_province'];
+    // $zip_postal      = $userData['zip_postal'];
+    // $country         = $userData['country'];
+    // $message         = $userData['message'];
+    // }
     //    $user_id         = $request->input('user_id');
 
     //check if user is logged in or not

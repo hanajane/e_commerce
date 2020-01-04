@@ -71,7 +71,7 @@
                     <!-- / nav-tabs -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane animated fadeIn active" id="description">
-                            <p>Phasellus risus nulla, tempor in est vel, sodales efficitur tellus. Nunc libero sapien, elementum vitae posuere in, efficitur non nulla. Aenean dignissim quam vel vulputate lacinia. Aliquam mauris proin ut pretium est pellentesque nisl nec ultricies scelerisque.</p>
+                            <p>{!!$product->description!!}</p>
                         </div>
                         <!-- / description-tab -->
 
@@ -203,7 +203,7 @@
                             <p><i class="lnr lnr-tag"></i><span>Price: {!!$product->price!!}</span></p>
                         </div>
                         <div class="info">
-                            <p><i class="lnr lnr-heart"></i><span>Category: <a href="#"> {!!$product->type!!}</a></span></p>
+                            <p><i class="lnr lnr-heart"></i><span>Category: <a href="#"> {!!$product->productType_id!!}</a></span></p>
                         </div>
                         <div class="info">
                             <p><i class="lnr lnr-menu"></i><span>SKU: {!!$product->id!!}</span></p>

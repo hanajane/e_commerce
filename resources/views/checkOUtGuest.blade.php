@@ -70,7 +70,7 @@
                             <textarea class="form-control" name="message" placeholder="Message"></textarea>
                             <div class="row">
                                 <div class="col">
-                                <button class="btn btn-primary-filled btn-rounded" type="submit" name="submit" ><i class="lnr lnr-exit"></i><span>Proceed To Payment</span></button>
+                                <button class="btn btn-primary-filled btn-rounded" type="submit" name="submit" ><i class="lnr lnr-exit"></i><span>Confirm Order</span></button>
                                 </div>
                             </div>
      

@@ -20,11 +20,22 @@ class PaymentsController extends Controller
         return view("allproducts",compact("products"));
     }
 
-    public function showPaymentPage()
+    public function showPaymentPage(Request $request)
     {
-        
-        // $shipping_method = Input::get('shipping_method');
-        $shipping_methods = DB::table('shipping_methods')->where('id', $shipping_method)->get();
+        //this is t initiate the shipping methode when the  total order amount > $100
+        // $radio = $request->get('radion_button', 0);
+
+            // $fields = Input::get('result');
+            // if($fields == 'buy'){
+            // // logic
+            // }
+            // else{
+            // // logic
+            // }
+
+            $shipping_method = $request->get('shipping_method');
+            // $shipping_methods = DB::table('shipping_methods')->where('id', $shipping_method)->get();
+            $shipping_methods = DB::table('shipping_methods')->get();
 
         $cart = Session::get('cart');
         $payment_info = Session::get('payment_info');
@@ -33,8 +44,7 @@ class PaymentsController extends Controller
         //cart is not paid yet
         if($payment_info['status'] == 'on_hold')
         {
-            return view('payment.paymentPage', ['payment_info'=> $payment_info, 'product_info'=> $product_info, 'cartItems' => $cart, 'shipping_methods' => $shipping_methods]); //passing arrays to the view paymentPage
-            
+            return view('payment.paymentPage', ['payment_info'=> $payment_info, 'product_info'=> $product_info, 'cartItems' => $cart, 'shipping_methods' => $shipping_methods]); //passing arrays to the view paymentPage //pass this for thr shipping methode : 'shipping_methods' => $shipping_methods
         }
         //cart is empty
         else 
@@ -47,7 +57,6 @@ class PaymentsController extends Controller
         // Session::flush();
     }
 
-
         private function storePaymentInfo($paypalPaymentID,$paypalPayerID)
         {
            $payment_info = Session::get('payment_info');
@@ -56,23 +65,22 @@ class PaymentsController extends Controller
            $paypal_payment_id = $paypalPaymentID;
            $paypal_payer_id = $paypalPayerID;
 
+        if($status == 'on_hold')
+            {
+            
+                //create (issue) a new payment row in payments table
+                    $date = date('Y-m-d H:i:s');
+                    $newPaymentArray = array("order_id"=>$order_id,"date"=>$date,"amount"=>$payment_info['price'],
+                        "paypal_payment_id"=>$paypal_payment_id, "paypal_payer_id" => $paypal_payer_id);
 
-       if($status == 'on_hold')
-       {
-       
-        //create (issue) a new payment row in payments table
-            $date = date('Y-m-d H:i:s');
-            $newPaymentArray = array("order_id"=>$order_id,"date"=>$date,"amount"=>$payment_info['price'],
-                "paypal_payment_id"=>$paypal_payment_id, "paypal_payer_id" => $paypal_payer_id);
+                    $created_order = DB::table("payments")->insert($newPaymentArray);
 
-            $created_order = DB::table("payments")->insert($newPaymentArray);
-
-       //update payment status in orders table to "paid"
-       
-       DB::table('orders')->where('id', $order_id)->update(['status' => 'paid']); // updating table 'orders'. getting the currect status(on_hold) to paid in the current order_id
-       
-      }
-    }
+                //update payment status in orders table to "paid"
+            
+            DB::table('orders')->where('id', $order_id)->update(['status' => 'paid']); // updating table 'orders'. getting the currect status(on_hold) to paid in the current order_id
+            
+            }
+        }
 
     //show payment receipt
     public function showPaymentReceipt($paypalPaymentID, $paypalPayerID)
@@ -99,13 +107,13 @@ class PaymentsController extends Controller
         }
     }
 
-    //shipping method
-    // public function shippingMethod(Request $request)
-    // {
-    //     $shipping_method = Input::get('shipping_method');
-    //     $shipping_methods = DB::table('shipping_methods')->where('id', $shipping_method)->get();
-    //     // ('id', $shipping_method)->get();
-    // }
+   // shipping method
+    public function shippingMethod(Request $request)
+    {
+        $shipping_method = Input::get('shipping_method');
+        $shipping_methods = DB::table('shipping_methods')->where('id', $shipping_method)->get();
+        // ('id', $shipping_method)->get();
+    }
 
     private function validate_payment($paypalPaymentID, $paypalPayerID)
     {

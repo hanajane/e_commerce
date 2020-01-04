@@ -144,7 +144,7 @@ Route::get('payment/paymentReceipt/{paymentID}/{payerID}', ["uses"=> "Payment\Pa
 Route::get('updateCart', ["uses" => "Payment\PaymentsController@showUpdateCart", "as"=> "showUpdateCart"]);
 
 //shipping method
-Route::get('shipping_method', ["uses" => "Payment\PaymentsController@shippingMethod", "as"=> "shippingMethod"]);
+Route::get('paymentPage/shipping_method', ["uses" => "Payment\PaymentsController@shippingMethod", "as"=> "shippingMethod"]);
 
 //storage
 
