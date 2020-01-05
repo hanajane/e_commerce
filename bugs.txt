@@ -4,4 +4,9 @@ BUGS
 
 ---print user shipping info to checkout products
 
---------doing the $userData
+-----$searchText (search feature) doesnt work properly
+	-couldnt fetch product types
+
+--------doing the $userData ----done
+
+------ i put null to yes in users table. put it back to no after the testing

@@ -72,8 +72,14 @@ class ProductsController extends Controller
     public function search(Request $request)
     {
         $searchText = $request->get('searchText');
+        // $productTypes = DB::table('product_type')->get();
+            
+        // foreach ($productTypes as $productType)
+        //     {
+        //         $productType->type;
+        //         $type = $productType::where()
+        //     }
         $products = Product::where('name', "Like", $searchText."%")
-                            ->orWhere('type', "Like", $searchText."%")
                             ->orWhere('hashtags', "Like", $searchText."%")->paginate(3);
 
         return view("allProducts", compact("products"))->render();;
@@ -225,37 +231,37 @@ class ProductsController extends Controller
 
 
     //create order
-    public function createOrder()
-    {
-        $cart = Session::get('cart');
+    // public function createOrder()
+    // {
+    //     $cart = Session::get('cart');
 
-        //cart is not empty
-        if($cart) {
-        // dump($cart);
-            $date = date('Y-m-d H:i:s');
-            $newOrderArray = array("status"=>"on_hold","date"=>$date,"del_date"=>$date,"price"=>$cart->totalPrice);
-            $created_order = DB::table("orders")->insert($newOrderArray);
-            $order_id = DB::getPdo()->lastInsertId();;
+    //     //cart is not empty
+    //     if($cart) {
+    //     // dump($cart);
+    //         $date = date('Y-m-d H:i:s');
+    //         $newOrderArray = array("status"=>"on_hold","date"=>$date,"del_date"=>$date,"price"=>$cart->totalPrice);
+    //         $created_order = DB::table("orders")->insert($newOrderArray);
+    //         $order_id = DB::getPdo()->lastInsertId();;
 
-            foreach ($cart->items as $cart_item)
-            {
-                $item_id = $cart_item['data']['id'];
-                $item_name = $cart_item['data']['name'];
-                $item_price = $cart_item['data']['price'];
-                $newItemsInCurrentOrder = array("item_id"=>$item_id,"order_id"=>$order_id,"item_name"=>$item_name,"item_price"=>$item_price);
-                $created_order_items = DB::table("order_items")->insert($newItemsInCurrentOrder);
-            }
+    //         foreach ($cart->items as $cart_item)
+    //         {
+    //             $item_id = $cart_item['data']['id'];
+    //             $item_name = $cart_item['data']['name'];
+    //             $item_price = $cart_item['data']['price'];
+    //             $newItemsInCurrentOrder = array("item_id"=>$item_id,"order_id"=>$order_id,"item_name"=>$item_name,"item_price"=>$item_price);
+    //             $created_order_items = DB::table("order_items")->insert($newItemsInCurrentOrder);
+    //         }
 
-            //delete cart
-            Session::forget("cart");
-            Session::flush();
-            return redirect()->route("allProducts")->withsuccess("Thanks For Choosing Us");
-        }
-        else
-        {
-            return redirect()->route("allProducts");
-        }
-    }
+    //         //delete cart
+    //         Session::forget("cart");
+    //         Session::flush();
+    //         return redirect()->route("allProducts")->withsuccess("Thanks For Choosing Us");
+    //     }
+    //     else
+    //     {
+    //         return redirect()->route("allProducts");
+    //     }
+    // }
 
 //initiate checkout
     public function checkOut()
@@ -356,7 +362,7 @@ class ProductsController extends Controller
     // dump($cart);
         $date = date('Y-m-d H:i:s');
         $newOrderArray = array("user_id" => $user_id, "status" => "on_hold","date"=>$date,"del_date"=>$date,"price"=>$cart->totalPrice,
-        "first_name"=>$first_name, "last_name"=>$last_name, "email"=> $email, 'phone'=>$phone, "address_1"=>$address_1, "address_2"=>$address_2, 'city'=>$city,'state_province'=>$state_province,'zip_postal'=>$zip_postal, 'country'=>$country);
+        "first_name"=>$first_name, "last_name"=>$last_name, "email"=> $email, 'phone'=>$phone, "address_1"=>$address_1, "address_2"=>$address_2, 'city'=>$city,'state_province'=>$state_province,'zip_postal'=>$zip_postal, 'country'=>$country, 'message'=>$message);
         
         $created_order = DB::table("orders")->insert($newOrderArray);
         $order_id = DB::getPdo()->lastInsertId();

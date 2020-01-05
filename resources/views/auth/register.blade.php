@@ -136,14 +136,14 @@
 										<option value="{{ old('s4') }}">Mexico</option>
 									</optgroup>
 								</select> --}}
-										@if ($errors->has('country'))
+										{{-- @if ($errors->has('country'))
 									<span class="invalid-feedback" role="alert">
 										<strong>{{ $errors->first('country') }}</strong>
 									</span>
 								@endif
 							</div>
 						</div>
-						</div>
+						</div> --}}
 							{{-- <div class="form-check">
 								<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
