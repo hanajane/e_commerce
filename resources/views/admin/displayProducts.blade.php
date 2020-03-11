@@ -7,7 +7,7 @@
         <thead>
         <tr>
             <th>#id</th>
-            <th>Image</th>
+            <th>Images</th>
             <th>Name</th>
             <th>Description</th>
             <th>Type</th>
@@ -23,17 +23,19 @@
         <tbody>
         @foreach($products as $product)
             <tr>
+                {{-- <td>{{$product->image->image}}</td> --}}
                 <td>{{$product['id']}}</td>
     {{--   another way for displaying images
-                <td><img src="{{asset ('storage')}}/product_images/{{$product['image']}}" alt="{{asset ('storage')}}/product_images/{{$product['image']}}" width="100" height="100" style="max-height:220px" ></td>--}}
-                <td> <img src="{{ Storage::url('product_images/'.$product['image'])}}"
+                <td><img src="{{asset ('storage')}}/Images/{{$product['image']}}" alt="{{asset ('storage')}}/Image/{{$product['image']}}" width="100" height="100" style="max-height:220px" ></td>--}}
+                {{-- <td> <img src="{{ Storage::url('Images/'.$product['productImage_id'])}}" --}}
+                <td> <img src="{{ Storage::url('Images/'.$product->image->image)}}"
                 alt="<?php echo Storage::url($product['image']); ?>" width="100" height="100" style="max-height:220px" >   </td>
                 <td>{{$product['name']}}</td>
                 <td>{{$product['description']}}</td>
                 <td>{{$product['type']}}</td>
                 <td>{{$product['price']}}</td>
                 <td>{{$product['size']}}</td>
-                <td>{{$product['swimweartype_id']}}</td>
+                <td>{{$product['swimwearType_id']}}</td>
                 <td>{{$product['hashtags']}}</td>
 
                 <td><a href="{{ route('adminEditProductImageForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit Image</a></td>
@@ -48,7 +50,7 @@
         </tbody>
     </table>
 
-    {{$products->links()}}
+    {{-- {{$products->links()}} --}}
 
 </div>
 @endsection

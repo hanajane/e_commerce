@@ -16,7 +16,8 @@
 					<div class="col-xs-6 col-md-4 product">
 					<a href="{!! route('singleProduct',$product->id) !!}" class="product-link"></a>
 						<!-- / product-link -->
-							<img class="imageResp" src="{{Storage::disk('local')->url('product_images/'.$product->productImage_id)}}" alt="product image" /> <!--bug-->
+							<img class="imageResp" src="{{Storage::disk('local')->url('Images/'.$product->image->image)}}" alt="product image" />
+																			
 							<!-- / product-image -->
 
 							<!-- product-hover-tools -->

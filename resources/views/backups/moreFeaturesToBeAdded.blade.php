@@ -184,7 +184,7 @@ homePage
     @foreach( $products as $product )
 	   <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
 		{{$product->id}}
-			<img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
+			<img src="{{Storage::disk('local')->url('Images/'.$product->image)}}" alt="product image" />
               <div class="carousel-caption d-none d-md-block">
                  <h3>{{ $product->price }}</h3>
                  <p>{{ $product->name }}</p>
@@ -328,7 +328,7 @@ homePage
 												<div class="single-products">
 													<div class="productinfo text-center">
 														{{$product->id}}
-														<img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
+														<img src="{{Storage::disk('local')->url('Images/'.$product->image->image)}}" alt="product image" />
 														<h2>{{$product -> price}}</h2>
 														<p>{{$product -> name}}</p>
 														<a href="{{route('AddToCartProduct',['id'=>$product->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -472,7 +472,7 @@ homePage
 										<div class="single-products">
 											<div class="productinfo text-center">
 												{{$product->id}}
-												<img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
+												<img src="{{Storage::disk('local')->url('Images/'.$product->image)}}" alt="product image" />
 												<h2>{{$product -> price}}</h2>
 												<p>{{$product -> name}}</p>
 												<a href="{{route('AddToCartProduct',['id'=>$product->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -891,7 +891,7 @@ homePage
                                     <div class="single-products">
                                         <div class="productinfo text-center">
                                             {{$product->id}}
-                                            <img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
+                                            <img src="{{Storage::disk('local')->url('Images/'.$product->image->image)}}" alt="product image" />
                                             <h2>{{$product -> price}}</h2>
                                             <p>{{$product -> name}}</p>
                                             <a href="{{route('AddToCartProduct',['id'=>$product->id])}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

@@ -42,7 +42,7 @@
                         <!-- wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-							<img src="{{Storage::disk('local')->url('product_images/'.$product->image)}}" alt="product image" />
+							<img src="{{Storage::disk('local')->url('Images/'.$product->image->image)}}" alt="product image" />
                             </div>
                             <div class="item">
                                 <img src="images/product-slide2.jpg" alt="">

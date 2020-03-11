@@ -86,12 +86,12 @@
 
 						</div>
 
-						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+						{{-- <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
 							<i class="fa fa-angle-left"></i>
 						</a>
 						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
 							<i class="fa fa-angle-right"></i>
-						</a>
+						</a> --}}
 					</div>
 
 				</div>
@@ -108,7 +108,7 @@
 				<div class="row featured">
 					<div class="recommended_items"><!--fetured_items-->
 						<div class="cl-effect-15">
-							<h2 class="text-center"><a href="" data-hover="FEATURED ITEMS">FEATURED ITEMS</a></h2>
+							<h2 class="text-center"><a href="{{route('allProducts')}}" data-hover="FEATURED ITEMS">FEATURED ITEMS</a></h2>
 						</div>
 					</div><!--/fetured_items-->
 				</div>
@@ -148,7 +148,7 @@
                         <i class="lnr lnr-gift"></i>
                     </div>
                     <h5>Free Shipping</h5>
-                    <p>Free Worldwide shipping</p>
+                    <p>Free Worldwide shipping on $100 of purchase</p>
                 </div>
             </div><!-- / col-md-4 -->
             <!-- / feature-block -->

@@ -29,7 +29,7 @@
 			<div class="form">
 				
 				<div class="wrapper">
-					<h2>Secure Checkout</h2>
+					<h2>Secure Checkout <img src="https://img.icons8.com/windows/40/000000/check-lock.png"></h2>
 				</div>
 				<div class="row">
 					<div class="col-sm-6">

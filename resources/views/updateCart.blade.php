@@ -31,7 +31,7 @@
                 @foreach ($cartItems->items as $item)
                     <tr class="cart-item">
                         <td class="image">
-                            <a href=""><img src="{{Storage::disk('local')->url('product_images/'.$item['data']['image'])}}" alt="item" width="100" height="100"></a>
+                            <a href=""><img src="{{Storage::disk('local')->url('Images/'.$item['data']->image['image'])}}" alt="item" width="100" height="100"></a>
                         </td>
 				        {{-- @foreach ($products as $product)
                             <td><a href="{!! route('singleProduct',$product->id) !!}"></a><h5>{{$item['data']['name']}}</h5>

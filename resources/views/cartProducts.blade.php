@@ -31,7 +31,7 @@
                 @foreach ($cartItems->items as $item)
                     <tr class="cart-item">
                         <td class="image">
-                            <a href=""><img src="{{Storage::disk('local')->url('product_images/'.$item['data']['image'])}}" alt="item" width="100" height="100"></a>
+                            <a href="{!! route('singleProduct',$item['data']['id']) !!}"><img src="{{Storage::disk('local')->url('Images/'.$item['data']->image['image'])}}" alt="item" width="100" height="100"></a>
                         </td>
 				        {{-- @foreach ($products as $product)
                             <td><a href="{!! route('singleProduct',$product->id) !!}"></a><h5>{{$item['data']['name']}}</h5>
@@ -39,7 +39,7 @@
                             </td>
                         @endforeach --}}
                         
-                            <td><a href=""><h5>{{$item['data']['name']}}</h5></a>
+                            <td><a href="{!! route('singleProduct',$item['data']['id']) !!}"><h5>{{$item['data']['name']}}</h5></a> <!-- get the selected items id to pass to showSingleProduct()-->
                                 <p>{{$item['data']['size']}}</p>
                             </td>
                         <td>${{$item['data']['price']}}</td>
@@ -117,7 +117,7 @@
                 @foreach ($cartItems->items as $item)
                     <tr>
                         <td class="cart_product">
-                            <a href=""><img src="{{Storage::disk('local')->url('product_images/'.$item['data']['image'])}}" alt="item" width="100" height="100"></a>
+                            <a href=""><img src="{{Storage::disk('local')->url('Images/'.$item['data']['image'])}}" alt="item" width="100" height="100"></a>
                         </td>
                         <td class="cart_description">
                             <h4><a href="">{{$item['data']['name']}}</a></h4>

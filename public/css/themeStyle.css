@@ -1619,8 +1619,8 @@ a.btn-social {
 }
 
 .nav.nav-pills a:hover {
-  color: white;
-  background: #3e9db8;
+  color: #3e9db8;
+  /* background: #3e9db8; */
 }
 
 .tab-content {

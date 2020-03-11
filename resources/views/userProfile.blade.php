@@ -59,7 +59,14 @@
 
                 <div id="my-orders" class="account-info-content">
                     <h4>My Orders <span class="pull-right"></h4>
-                    <p><a href="#x">Order #38726</a> <span>- Paid & Shipped</span> - Tracking No: <span>#TRCK182736</span></p>
+                        
+                        {{-- @foreach ($userOrders as $order)
+                        {{$order->id}}
+                            
+                        @endforeach --}}
+                        {{-- {{$users['id']}} --}}
+
+                    <p><a href="#x">Order #{orders_items->order_id}</a> <span>Order Placement Date : {orders->date}</span> - Tracking No: <span>#TRCK182736</span></p>
                     <p><a href="#x">Order #34823</a> <span>- Completed on 25.10.2016</span></p>
                     <p><a href="#x">Order #23463</a> <span>- Completed on 16.08.2016</span></p>
                 </div><!-- / my-orders -->

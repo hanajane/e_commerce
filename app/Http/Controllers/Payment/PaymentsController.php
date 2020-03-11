@@ -115,6 +115,7 @@ class PaymentsController extends Controller
         // ('id', $shipping_method)->get();
     }
 
+    //payment validation
     private function validate_payment($paypalPaymentID, $paypalPayerID)
     {
         $paypalEnv       = 'production'; // Or 'production'

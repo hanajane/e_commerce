@@ -17,9 +17,14 @@
 
 
             <div class="form-group">
-                <label for="type">Type</label>
-                <input type="text" class="form-control" name="type" id="type" placeholder="type" value="{{$product->type}}" required>
-{{--                {{!!Form::select('size', array('L' => 'Large', 'S' => 'Small'))}}--}}
+                <label for="type">Product Type</label>
+                <select class="form-control m-bot15" name="productType_id">
+                    @if ($productType_info->count())
+                        @foreach($productType_info as $productType)
+                            <option value="{{ $productType->id }}" {{ $productType->id ? 'selected="selected"' : '' }}>{{ $productType->type }}</option>    
+                    @endforeach
+                    @endif
+                </select>
             </div>
             <div class="form-group">
                 <label for="type">Price</label>
@@ -27,7 +32,13 @@
             </div>
             <div class="form-group">
                 <label for="type">Size</label>
-                <input type="text" class="form-control" name="size" id="size" placeholder="size" value="{{$product->size}}" required>
+                    <select class="form-control m-bot15" name="productSize_id">
+                        @if ($swimwearSize_info->count())
+                            @foreach($swimwearSize_info as $swimwearSize)
+                                <option value="{{ $swimwearSize->id }}" {{ $swimwearSize->id ? 'selected="selected"' : '' }}>{{ $swimwearSize->productSize }}</option>    
+                        @endforeach
+                        @endif
+                    </select>
             </div>
             <div class="form-group">
                {{--  <ul class="nav navbar-nav collapse navbar-collapse">
@@ -59,7 +70,14 @@
                     <li><a href="{{route('accessoryProducts')}}" class="panel-title">Accessories</a></li>
                 </ul> --}}
                 <label for="type">swimwear type</label>
-                <input type="text" class="form-control" name="swimwearType_id" id="price" placeholder="swimwear type" value="{{$product->v}}" required>
+                    <select class="form-control m-bot15" name="swimwearType_id">
+                        {{-- <option value="">Not Applicable</option> --}}
+                        @if ($swimwearType_info->count())
+                            @foreach($swimwearType_info as $swimwearType)
+                                <option value="{{ $swimwearType->id }}" {{ $swimwearType->id ? 'selected="selected"' : '' }}>{{ $swimwearType->swimwearType }}</option>    
+                        @endforeach
+                        @endif
+                    </select>
             </div>
             <div class="form-group">
                 <label for="type">Hashtags</label>

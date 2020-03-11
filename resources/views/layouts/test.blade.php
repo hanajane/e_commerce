@@ -4,13 +4,13 @@
 public function deleteProduct($id)
 {
     $product = Product::find($id);
-    $exists =  Storage::disk("local")->exists("public/product_images/".$product->image);
+    $exists =  Storage::disk("local")->exists("public/Image/".$product->image);
 
 //if old image exists
 if($exists)
 {
     //delete it
-    Storage::delete('public/product_images/'.$product->image);
+    Storage::delete('public/Image/'.$product->image);
 }
 
 

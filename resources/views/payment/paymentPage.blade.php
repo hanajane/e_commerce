@@ -64,9 +64,9 @@
                                         @foreach ($cartItems->items as $item)
                                             <tr class="cart-item">
                                                 <td class="image">
-                                                    <a href=""><img src="{{Storage::disk('local')->url('product_images/'.$item['data']['image'])}}" alt="item" width="100" height="100"></a>
+                                                    <a href="{!! route('singleProduct',$item['data']['id']) !!}"><img src="{{Storage::disk('local')->url('Images/'.$item['data']->image['image'])}}" alt="item" width="100" height="100"></a><!-- get the selected items id to pass to showSingleProduct()-->
                                                 </td>
-                                                <td><a href=""><h5>{{$item['data']['name']}}</h5></a>
+                                                <td><a href="{!! route('singleProduct',$item['data']['id']) !!}"><h5>{{$item['data']['name']}}</h5></a><!-- get the selected items id to pass to showSingleProduct()-->
                                                     <p>{{$item['data']['size']}}</p>
                                                 </td>
                                                   <td class="qty">
@@ -92,7 +92,7 @@
                                 @else
                                   <li>Please choose the shipping method for your order:</li>
                                   @foreach($shipping_methods as $method)                                    
-                                    <input type="radio" name="result" value="{{$method->id}}" checked> &nbsp {{ $method->shipping_method }} &nbsp ${{ $method->shipping_cost }}<br />
+                                    <input type="radio" name="result" value="{{$method->id}}" checked> &nbsp {{ $method->shipping_method }} &nbsp ${{ $method->shipping_cost }} &nbsp ( {{ $method->deliveryDays }} )<br />
 
                                       {{-- <input type="radio" class="flat" name="shipping_method"  value="1" 
                                         {{ $shipping_methods->shipping_method == '1' ? 'checked' : '' }} 

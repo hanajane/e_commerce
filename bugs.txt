@@ -10,3 +10,5 @@ BUGS
 --------doing the $userData ----done
 
 ------ i put null to yes in users table. put it back to no after the testing
+
+-------home controller -- trying to fetch orders data to user profile

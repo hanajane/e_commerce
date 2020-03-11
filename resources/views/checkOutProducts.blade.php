@@ -6,7 +6,7 @@
         <div class="container">
             <div class="page-header-content text-center">
                 <div class="page-header wsub">
-                    <h1 class="page-title fadeInDown animated first">Checkout</h1>
+                    <h1 class="page-title fadeInDown animated first">Billing Info</h1>
                 </div><!-- / page-header -->
             </div><!-- / page-header-content -->
         </div><!-- / container -->
@@ -26,32 +26,35 @@
                         <div class="col-sm-10 account-info">
                             <div id="personal-info" class="account-info-content">
                                 <h4>Personal Info <span class="pull-right"></h4>
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-8 col-md-10">
-                                        <p>Full Name: <span name="first_name">{{ $userData->first_name }} </span><span name="last_name">{{ $userData->last_name }}<span></p>
-                                        <p>Email: <span name="email">{{ $userData->email }}</span></p>
-                                        <p>Phone: <span name="phone">{{ $userData->phone }}</span></p>
-                                        <p>Address: <span name="address_1">{{ $userData->address_1 }}</span></p>
-                                        <p>Address 2: <span name="address_2">{{ $userData->address_2 }}</span></p>
-                                        <p>State / Province: <span name="state_province">{{ $userData->state_province }}</span></p>
-                                        <p>City: <span name="city">{{ $userData->city }}</span></p>
-                                        <p>ZIP Code: <span name="country">{{ $userData->zip_postal }}</span></p><p>Country: <span>{{ $userData->country }}</span></p>
-                                    </div>
-                                </div><!-- / row -->
-                                <div class="row" style="display:none">
-                                    <div class="col-xs-6 col-sm-8 col-md-10">
-                                        <input for="first_name" class="input100" id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ $userData->first_name }}" required >
-                                        <input for="last_name" class="input100" id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ $userData->last_name }}" required >
-                                        <input for="email" class="input100" id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $userData->email }}" required >
-                                        <input for="phone" class="input100" id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $userData->phone }}" required >
-                                        <input for="address_1" class="input100" id="address_1" type="text" class="form-control{{ $errors->has('address_1') ? ' is-invalid' : '' }}" name="address_1" value="{{ $userData->address_1 }}" required >
-                                        <input for="address_2" class="input100" id="address_2" type="text" class="form-control{{ $errors->has('address_2') ? ' is-invalid' : '' }}" name="address_2" value="{{ $userData->address_2 }}" required >
-                                        <input for="state_province" class="input100" id="state_province" type="text" class="form-control{{ $errors->has('state_province') ? ' is-invalid' : '' }}" name="state_province" value="{{ $userData->state_province }}" required >
-                                        <input for="city" class="input100" id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ $userData->city }}" required >
-                                        <input for="zip_postal" class="input100" id="zip_postal" type="text" class="form-control{{ $errors->has('zip_postal') ? ' is-invalid' : '' }}" name="zip_postal" value="{{ $userData->zip_postal }}" required >
-                                        <input for="country" class="input100" id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ $userData->country }}" required >
-                                    </div>
-                                </div><!-- / row -->
+                                    {{-- @if (!$isUpdateInfo) --}}
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-8 col-md-10">
+                                                <p>Full Name: <span name="first_name">{{ $userData->first_name }} </span><span name="last_name">{{ $userData->last_name }}<span></p>
+                                                <p>Email: <span name="email">{{ $userData->email }}</span></p>
+                                                <p>Phone: <span name="phone">{{ $userData->phone }}</span></p>
+                                                <p>Address: <span name="address_1">{{ $userData->address_1 }}</span></p>
+                                                <p>Address 2: <span name="address_2">{{ $userData->address_2 }}</span></p>
+                                                <p>State / Province: <span name="state_province">{{ $userData->state_province }}</span></p>
+                                                <p>City: <span name="city">{{ $userData->city }}</span></p>
+                                                <p>ZIP Code: <span name="country">{{ $userData->zip_postal }}</span></p><p>Country: <span>{{ $userData->country }}</span></p>
+                                            </div>
+                                        </div><!-- / row -->
+                                    {{-- @else --}}
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-8 col-md-10">
+                                                <input for="first_name" class="input100" id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ $userData->first_name }}" required >
+                                                <input for="last_name" class="input100" id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ $userData->last_name }}" required >
+                                                <input for="email" class="input100" id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $userData->email }}" required >
+                                                <input for="phone" class="input100" id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ $userData->phone }}" required >
+                                                <input for="address_1" class="input100" id="address_1" type="text" class="form-control{{ $errors->has('address_1') ? ' is-invalid' : '' }}" name="address_1" value="{{ $userData->address_1 }}" required >
+                                                <input for="address_2" class="input100" id="address_2" type="text" class="form-control{{ $errors->has('address_2') ? ' is-invalid' : '' }}" name="address_2" value="{{ $userData->address_2 }}" required >
+                                                <input for="state_province" class="input100" id="state_province" type="text" class="form-control{{ $errors->has('state_province') ? ' is-invalid' : '' }}" name="state_province" value="{{ $userData->state_province }}" required >
+                                                <input for="city" class="input100" id="city" type="text" class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}" name="city" value="{{ $userData->city }}" required >
+                                                <input for="zip_postal" class="input100" id="zip_postal" type="text" class="form-control{{ $errors->has('zip_postal') ? ' is-invalid' : '' }}" name="zip_postal" value="{{ $userData->zip_postal }}" required >
+                                                <input for="country" class="input100" id="country" type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ $userData->country }}" required >
+                                            </div>
+                                        </div><!-- / row -->
+                                {{-- @endif --}}
                             </div><!-- / personal-info -->
                             <textarea class="form-control" style="backgroud-color:red" name="message" placeholder="Message"></textarea>
                         </div><!-- / account-info -->
@@ -94,7 +97,7 @@
                                 <button class="btn btn-primary-filled btn-rounded" type="submit" name="submit" ><i class="lnr lnr-exit"></i><span>Confirm Order</span></button>
                                 </div>
                                 <div class="update-cart col-sm-6">
-                                    <button class="btn btn-default-filled btn-rounded" type="button"><i class="lnr lnr-sync"></i> <span>Update Info</span></button>
+                                    <button class="btn btn-default-filled btn-rounded" name="updateInfo" type="button"><i class="lnr lnr-sync"></i> <span>Update Info</span></button>
                                 </div><!-- / update-cart -->
                             </div>
      
